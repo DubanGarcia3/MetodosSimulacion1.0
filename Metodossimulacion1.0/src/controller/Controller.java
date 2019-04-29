@@ -47,8 +47,8 @@ public class Controller implements ActionListener {
 			int seed = jDialogMiddle.getSeed();
 			int potency = (int) Math.pow(seed, 2);
 			
-//			Register register = new Register(seed, potency, 0, 0, 0);
-//			jDialogMiddle.addRow(register);
+			Register register = new Register(seed, potency, 0, 0, 0);
+			jDialogMiddle.addRow(register);
 		}
 		return 0;
 	}
