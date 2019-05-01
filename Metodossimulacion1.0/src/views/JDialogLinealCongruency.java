@@ -28,7 +28,7 @@ public class JDialogLinealCongruency extends JDialog{
 		
 		JPanel jPanelMain = new JPanel();
 		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));
-		jPanel1.setPreferredSize(new Dimension((int)this.getWidth(), this.getHeight()/4));
+		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-20, this.getHeight()/4));
 		
 		jPanel1.add(jTextFieldX0);
 		jPanel1.add(jTextFieldK);
