@@ -2,6 +2,7 @@ package uptc.com.sim.entities;
 
 public class Register {
 	
+	private static int no = 0;
 	private int xi;
 	private int potency; 
 	private int extension;
@@ -9,11 +10,16 @@ public class Register {
 	private int ri;
 	
 	public Register(int xi, int potency, int extension, int extraction, int ri) {
+		Register.no++;
 		this.xi = xi;
 		this.potency = potency;
 		this.extension = extension;
 		this.extraction = extraction;
 		this.ri = ri;
+	}
+	
+	public int getNo() {
+		return no;
 	}
 
 	public int getXi() {
@@ -57,6 +63,6 @@ public class Register {
 	}
 	
 	public Object[] getData() {
-		return new Object[]{xi, potency, extension, extraction, ri};
+		return new Object[]{no, xi, potency, extension, extraction, ri};
 	}
 }

@@ -42,11 +42,10 @@ public class Controller implements ActionListener {
 	}
 	
 	private int calculate() {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 100; i++) {
 			String a = "asd";
 			int seed = jDialogMiddle.getSeed();
 			int potency = (int) Math.pow(seed, 2);
-			
 			Register register = new Register(seed, potency, 0, 0, 0);
 			jDialogMiddle.addRow(register);
 		}
