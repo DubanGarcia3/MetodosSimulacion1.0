@@ -7,9 +7,9 @@ public class Register {
 	private int potency; 
 	private int extension;
 	private int extraction;
-	private int ri;
+	private double ri;
 	
-	public Register(int xi, int potency, int extension, int extraction, int ri) {
+	public Register(int xi, int potency, int extension, int extraction, double ri) {
 		Register.no++;
 		this.xi = xi;
 		this.potency = potency;
@@ -54,11 +54,11 @@ public class Register {
 		this.extraction = extraction;
 	}
 
-	public int getRi() {
+	public double getRi() {
 		return ri;
 	}
 
-	public void setRi(int ri) {
+	public void setRi(double ri) {
 		this.ri = ri;
 	}
 	

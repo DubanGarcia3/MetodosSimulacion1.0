@@ -17,7 +17,7 @@ public class JDialogMiddle extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanelMiddleTop jPanelMiddleTop;
 	private DefaultTableModel model;
-	private static final String[] COLUMS = {"No","Xi","Potencia","Extension","Ri"}; 
+	private static final String[] COLUMS = {"No","Xi","Potencia","Extension", "Extraccion","Ri"}; 
 	private JTable table;
 	
 	

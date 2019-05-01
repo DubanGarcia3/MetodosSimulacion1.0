@@ -37,19 +37,37 @@ public class Controller implements ActionListener {
 	}
 	
 	private void loadSeed() {
-//		jDialogMiddle.test(jDialogMiddle.getSeed());
-		calculate();
+		calculate(jDialogMiddle.getSeed());
 	}
 	
-	private int calculate() {
-		for (int i = 0; i < 100; i++) {
-			String a = "asd";
-			int seed = jDialogMiddle.getSeed();
+	private void calculate(int initial) {
+			int seed = initial;
 			int potency = (int) Math.pow(seed, 2);
-			Register register = new Register(seed, potency, 0, 0, 0);
+			String extent = String.valueOf(potency);
+			int length = extent.length();
+			String addZero = addZero(length, extent);
+			System.out.println(calculateRi(addZero));
+			Register register = new Register(seed, potency, length, getChain(addZero), calculateRi(addZero));
 			jDialogMiddle.addRow(register);
-		}
-		return 0;
+			calculate(getChain(addZero));
 	}
 	
+	private String addZero(int length, String extent) {
+		int value = (8-length);
+		String completeChain =extent;
+		for (int i = 0; i < value; i++) {
+			 completeChain= "0"+completeChain;
+		}
+		return  completeChain;
+	}
+	
+	private int getChain(String chain) {
+		String value = chain.substring(2, 6);
+		int extract = Integer.parseInt(value);
+		return extract;
+	}
+	
+	private double calculateRi(String chain) {
+		return (double)getChain(chain)/10000;
+	}
 }
