@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -60,6 +61,39 @@ public class JTableLinealCongruency extends JPanel{
 		String [] head = { "ID", "Xi", "Ri"};
 		dtm.setColumnIdentifiers(head);
 	}
+	
+//	public void addPerson(Person Person) {
+//		String[] person = { "" + Person.getId(), Person.getName(), "" + Person.getLastName(), Person.getGender().name(), Person.getBirthDate().toString()};
+//		dtm.addRow(person);
+//	}
+	
+	
+
+	public DefaultTableModel getDtm() {
+		return dtm;
+	}
+
+	public void setDtm(DefaultTableModel dtm) {
+		this.dtm = dtm;
+	}
+
+	public JScrollPane getJsp() {
+		return jsp;
+	}
+
+	public void setJsp(JScrollPane jsp) {
+		this.jsp = jsp;
+	}
+
+	public JTable getjTable() {
+		return jTable;
+	}
+
+	public void setjTable(JTable jTable) {
+		this.jTable = jTable;
+	}
+	
+	
 //
 //	public void refresh() {
 //		propertiesTitle = controllerGUI.getPropertiesTitle();
@@ -72,10 +106,6 @@ public class JTableLinealCongruency extends JPanel{
 //		dtm.setColumnIdentifiers(head);
 //	}
 //	
-//	public void addPerson(Person Person) {
-//		String[] person = { "" + Person.getId(), Person.getName(), "" + Person.getLastName(), Person.getGender().name(), Person.getBirthDate().toString()};
-//		dtm.addRow(person);
-//	}
 //	
 //	public void refreshAll(){
 //	}

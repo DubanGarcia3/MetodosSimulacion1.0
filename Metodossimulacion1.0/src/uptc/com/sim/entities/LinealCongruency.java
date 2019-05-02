@@ -19,7 +19,10 @@ public class LinealCongruency {
 		this.a = this.getA();
 		this.m = this.getM();
 	}
-	
+//	
+//	public LinealCongruency() {
+//	}
+
 	public ArrayList<Double> builtXiList(double seed){
 		double total = 0;
 		xi.add(seed);
@@ -46,7 +49,15 @@ public class LinealCongruency {
 			}
 		}
 	}
-	
+
+	public ArrayList<Double> getRi() {
+		return ri;
+	}
+
+	public void setRi(ArrayList<Double> ri) {
+		this.ri = ri;
+	}
+
 	public ArrayList<Double> getXi() {
 		return xi;
 	}

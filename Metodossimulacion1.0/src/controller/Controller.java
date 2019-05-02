@@ -2,8 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.Register;
+import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JFramePrincipal;
 
@@ -11,10 +14,14 @@ public class Controller implements ActionListener {
 
 	private JFramePrincipal jFramePrincipal;
 	private JDialogMiddle jDialogMiddle;
+	private JDialogLinealCongruency jDialogLinealCongruency;
+	private LinealCongruency linealCongruency;
 
 	public Controller() {
+		this.linealCongruency = new LinealCongruency(1,2,6,3);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
+		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
 	}
 
 	public void run() {
@@ -30,12 +37,37 @@ public class Controller implements ActionListener {
 		case LOAD_SEED:
 			loadSeed();
 			break;
+		case CONG_LIN:
+			manageCongLin();
+			generateListCongLin();
+		case BTN_CONG_LIN:
+			generateListCongLin();
 		default:
 			break;
 		}
 		
 	}
 	
+	private void generateListCongLin() {
+//		this.linealCongruency = new LinealCongruency(
+//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText())),
+//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldK().getText())),
+//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldC().getText())),
+//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldG().getText())));
+				jDialogLinealCongruency.getjTableLinealCongruency().getjTable().removeAll();
+				for (int i = 0; i < linealCongruency.getXi().size(); i++) {
+						System.out.println("hogml");
+						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(i);
+						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(linealCongruency.getXi().get(i));
+						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(linealCongruency.getRi().get(i));
+				}
+				linealCongruency.print();
+	}
+
+	private void manageCongLin() {
+		jDialogLinealCongruency.setVisible(true);
+	}
+
 	private void loadSeed() {
 		calculate(jDialogMiddle.getSeed());
 	}

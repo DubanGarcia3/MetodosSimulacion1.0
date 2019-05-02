@@ -41,6 +41,8 @@ public class JPanelCenter  extends JPanel{
 		jButtonCongruency.setFocusable(false);
 		jButtonCongruency.setBackground(Color.WHITE);
 		jButtonCongruency.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButtonCongruency.addActionListener(controller);
+		jButtonCongruency.setActionCommand(Action.CONG_LIN.toString());
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.weightx = 1;
