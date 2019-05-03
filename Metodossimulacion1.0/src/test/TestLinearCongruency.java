@@ -9,8 +9,7 @@ public class TestLinearCongruency {
 //		JDialogLinealCongruency dialogLinealCongruency = new JDialogLinealCongruency();
 //		dialogLinealCongruency.setVisible(true);
 		LinealCongruency congruency = new LinealCongruency(3, 2, 6, 3);
-		congruency.builtXiList(3);
-		congruency.builtRiList();
+		congruency.calculateLinealCong(3);
 		congruency.print();
 	}
 }

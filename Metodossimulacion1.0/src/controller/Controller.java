@@ -49,19 +49,7 @@ public class Controller implements ActionListener {
 	}
 	
 	private void generateListCongLin() {
-//		this.linealCongruency = new LinealCongruency(
-//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText())),
-//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldK().getText())),
-//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldC().getText())),
-//				(Double.parseDouble(jDialogLinealCongruency.getjTextFieldG().getText())));
-				jDialogLinealCongruency.getjTableLinealCongruency().getjTable().removeAll();
-				for (int i = 0; i < linealCongruency.getXi().size(); i++) {
-						System.out.println("hogml");
-						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(i);
-						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(linealCongruency.getXi().get(i));
-						jDialogLinealCongruency.getjTableLinealCongruency().getDtm().addColumn(linealCongruency.getRi().get(i));
-				}
-				linealCongruency.print();
+		jDialogLinealCongruency.getjTableLinealCongruency().addListCongruency(linealCongruency.getListData());
 	}
 
 	private void manageCongLin() {

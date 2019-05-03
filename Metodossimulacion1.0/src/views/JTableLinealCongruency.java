@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import uptc.com.sim.entities.Congruency;
+
 public class JTableLinealCongruency extends JPanel{
 	
 	/**
@@ -62,12 +64,19 @@ public class JTableLinealCongruency extends JPanel{
 		dtm.setColumnIdentifiers(head);
 	}
 	
-//	public void addPerson(Person Person) {
-//		String[] person = { "" + Person.getId(), Person.getName(), "" + Person.getLastName(), Person.getGender().name(), Person.getBirthDate().toString()};
-//		dtm.addRow(person);
-//	}
+	public void addCongruency(Congruency congruency) {
+		String[] c = { "" + congruency.getId(), ""+ congruency.getXi(), "" + congruency.getRi()};
+		dtm.addRow(c);
+	}
 	
-	
+	public void addListCongruency(ArrayList<Congruency> list) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i) != null) {
+				String[] c = { "" + list.get(i).getId(), ""+ list.get(i).getXi(), "" + list.get(i).getRi()};
+				dtm.addRow(c);
+			}
+		}
+	}
 
 	public DefaultTableModel getDtm() {
 		return dtm;
