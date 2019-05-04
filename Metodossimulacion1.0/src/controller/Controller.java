@@ -53,7 +53,6 @@ public class Controller implements ActionListener {
 	}
 	
 	private void manageCongMulti() {
-		
 	}
 
 	private void generateListCongLin() {
