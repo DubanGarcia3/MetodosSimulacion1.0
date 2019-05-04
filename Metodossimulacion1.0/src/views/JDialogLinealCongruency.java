@@ -3,6 +3,7 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -31,22 +32,30 @@ public class JDialogLinealCongruency extends JDialog{
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight()- 
 						Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4)));
 		this.setLocationRelativeTo(null);
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new FlowLayout());
+		this.setResizable(false);
 		init();
 	}
 
 	private void init() {
 		JScrollPane scrollPane = new JScrollPane();
 		JPanel jPanel = new JPanel();
+		jPanel.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/5));
+		
+		Font font = new Font("Century Gothic", 1, 14);
 		jTextFieldX0 = new MyJTextField("Valor Xo");
 		jTextFieldK = new MyJTextField("valor K");
 		jTextFieldG = new MyJTextField("valor G");
 		jTextFieldC = new MyJTextField("Valor C");
 		
+		jTextFieldX0.setFont(font);
+		jTextFieldK.setFont(font);
+		jTextFieldG.setFont(font);
+		jTextFieldC.setFont(font);
 		
 		jButton = new JButton("Generar");
-		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));
-		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/2));
+		JPanel jPanel1 = new JPanel(new GridLayout(2,2,5,5));
+		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/8));
 		
 		jPanel1.add(jTextFieldX0);
 		jPanel1.add(jTextFieldK);
@@ -67,9 +76,9 @@ public class JDialogLinealCongruency extends JDialog{
 		
 		
 		jTableLinealCongruency = new JTableLinealCongruency();
-//		jTableLinealCongruency.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()*3-this.getHeight()/4));
+		scrollPane.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()*3-this.getHeight()/4));
 		scrollPane.setViewportView(jTableLinealCongruency);
-		this.add(jPanel);
+		this.add(jPanel );
 		this.add(scrollPane);
 	}
 	
@@ -86,8 +95,6 @@ public class JDialogLinealCongruency extends JDialog{
 		jTextFieldC.setText("");
 	}
 	
-	
-
 	public MyJTextField getjTextFieldX0() {
 		return jTextFieldX0;
 	}
