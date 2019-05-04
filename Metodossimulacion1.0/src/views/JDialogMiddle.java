@@ -59,4 +59,8 @@ public class JDialogMiddle extends JDialog {
 	public int getSeed() {
 		return jPanelMiddleTop.getSeed();
 	}
+	
+	public void messagge(int value) {
+		jPanelMiddleTop.messagge(value);
+	}
 }

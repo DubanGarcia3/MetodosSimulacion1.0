@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.print.attribute.standard.JobName;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -66,11 +68,17 @@ public class JPanelMiddleTop extends JPanel {
 	}
 	
 	public int getSeed() {
-		if(jTextField.getText().isEmpty()) {
+		if(jTextField.getText().isEmpty() || jTextField.getText().length() <4) {
 			return 0;
 		}else {
 			return Integer.parseInt(jTextField.getText());
 		}
 		
+	}
+	
+	public void messagge(int value) {
+		if(value ==0) {
+			JOptionPane.showMessageDialog(null, "Debe ingresar una semilla valida");
+		}
 	}
 }
