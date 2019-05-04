@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -74,28 +73,26 @@ public class Controller implements ActionListener {
 
 	private void loadSeed() {
 		if(jDialogMiddle.statusSeed() == true) {
-			calculate(jDialogMiddle.getSeed());
+				try {
+					calculate(jDialogMiddle.getSeed());
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Se totie");
+				}
 		}else {
 			jDialogMiddle.messagge(jDialogMiddle.statusSeed());
 		}
+		
 	}
 	
-	private void calculate(int initial) {
-		try {
+	private void calculate(int initial) throws Exception{
 			int seed = initial;
 			int potency = (int) Math.pow(seed, 2);
 			String extent = String.valueOf(potency);
 			int length = extent.length();
 			String addZero = addZero(length, extent);
-			System.out.println(calculateRi(addZero));
 			Register register = new Register(seed, potency, length, getChain(addZero), calculateRi(addZero));
 			jDialogMiddle.addRow(register);
 			calculate(getChain(addZero));
-			}
-			catch(Exception e) {
-				System.out.println(e.getMessage());
-			 JOptionPane.showMessageDialog(null, "El algoritmo se autodestruyo"+e.getMessage());
-			}	
 	}
 	
 	private String addZero(int length, String extent) {
