@@ -60,7 +60,7 @@ public class Controller implements ActionListener {
 			jDialogLinealCongruency.getjTextFieldK().getText().isEmpty() ||
 			jDialogLinealCongruency.getjTextFieldC().getText().isEmpty() ||
 			jDialogLinealCongruency.getjTextFieldG().getText().isEmpty() ) {
-			JOptionPane.showMessageDialog(null, "por favor ingresar todos los datos numericos ;)");
+			JOptionPane.showMessageDialog(null, "por favor ingresar todos los datos numericos  ;)");
 		}else {
 			jDialogLinealCongruency.setVisible(true);
 			linealCongruency.setXo(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText()));
