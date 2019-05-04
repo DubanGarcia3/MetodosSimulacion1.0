@@ -41,10 +41,6 @@ public class JDialogInputLinearCongruency extends JDialog{
 		jTextFieldG = new MyJTextField("valor G");
 		jTextFieldC = new MyJTextField("Valor C");
 		
-		jTextFieldX0.setFocusable(false);
-		jTextFieldK.setFocusable(false);
-		jTextFieldG.setFocusable(false);
-		jTextFieldC.setFocusable(false);
 		
 		jButton = new JButton("Generar");
 		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));

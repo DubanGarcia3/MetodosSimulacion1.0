@@ -21,7 +21,7 @@ public class LinealCongruency {
 		double auxXi=x0;
 		double auxRi=(x0/(m-1));
 		addFirst(x0);
-		for (int i = 1 ; i < 50; i++) {
+		for (int i = 1 ; i < 5000; i++) {
 			auxXi = ((a*listData.get(i-1).getXi()+c) % m);
 			auxRi = (listData.get(i-1).getXi()/(m-1));
 			listData.add(new Congruency(auxXi,auxRi));

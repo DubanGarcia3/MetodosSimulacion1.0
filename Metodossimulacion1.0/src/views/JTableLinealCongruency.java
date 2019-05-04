@@ -23,7 +23,7 @@ public class JTableLinealCongruency extends JPanel{
 	
 	private JTable jTable;
 	private DefaultTableModel dtm;
-	private JScrollPane jsp;
+//	private JScrollPane jsp;
 	
 	public JTableLinealCongruency(){
 		initComponents();
@@ -47,12 +47,13 @@ public class JTableLinealCongruency extends JPanel{
 		jTable.setBackground(Color.white);
 		jTable.setBorder(null);
 		
-		jsp = new JScrollPane(jTable);
-		jsp.setForeground(Color.white);
-		jsp.setBorder(null);
-		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
+//		jsp = new JScrollPane(jTable);
+//		jsp.setForeground(Color.white);
+//		jsp.setBorder(null);
+//		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		add(jsp, BorderLayout.PAGE_END);
+//		add(jsp, BorderLayout.PAGE_END);
+		add(jTable);
 		this.setBorder(null);
 	}
 	
@@ -86,13 +87,13 @@ public class JTableLinealCongruency extends JPanel{
 		this.dtm = dtm;
 	}
 
-	public JScrollPane getJsp() {
-		return jsp;
-	}
-
-	public void setJsp(JScrollPane jsp) {
-		this.jsp = jsp;
-	}
+//	public JScrollPane getJsp() {
+//		return jsp;
+//	}
+//
+//	public void setJsp(JScrollPane jsp) {
+//		this.jsp = jsp;
+//	}
 
 	public JTable getjTable() {
 		return jTable;
