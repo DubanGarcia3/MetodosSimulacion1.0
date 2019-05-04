@@ -49,16 +49,6 @@ public class JPanelCenter  extends JPanel{
 		gbc.weighty = 1;
 		add(jButtonCongruency,gbc);
 		
-		jButtonDistribution = new JButton("Distribucion uniforme");
-		jButtonDistribution.setFocusable(false);
-		jButtonDistribution.setBackground(Color.WHITE);
-		jButtonDistribution.setFont(new Font("Arial", Font.PLAIN, 16));
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		add(jButtonDistribution, gbc);
-		
 		jButtonCongruencyMulti = new JButton("Congruencia Multi.");
 		jButtonCongruencyMulti.setFocusable(false);
 		jButtonCongruencyMulti.setBackground(Color.WHITE);
@@ -66,9 +56,21 @@ public class JPanelCenter  extends JPanel{
 		jButtonCongruencyMulti.addActionListener(controller);
 		jButtonCongruencyMulti.setActionCommand(Action.CONG_MUL.toString());
 		gbc.gridx = 0;
-		gbc.gridy = 3;
+		gbc.gridy = 2;
 		gbc.weightx = 1;
 		gbc.weighty = 1;
 		add(jButtonCongruencyMulti,gbc);
+		
+		jButtonDistribution = new JButton("Distribucion uniforme");
+		jButtonDistribution.setFocusable(false);
+		jButtonDistribution.setBackground(Color.WHITE);
+		jButtonDistribution.setFont(new Font("Arial", Font.PLAIN, 16));
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		add(jButtonDistribution, gbc);
+		
+		
 	}
 }
