@@ -57,13 +57,20 @@ public class Controller implements ActionListener {
 	}
 
 	private void generateListCongLin() {
-		jDialogLinealCongruency.setVisible(true);
-		linealCongruency.setXo(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText()));
-		linealCongruency.setK(Double.parseDouble(jDialogLinealCongruency.getjTextFieldK().getText()));
-		linealCongruency.setC(Double.parseDouble(jDialogLinealCongruency.getjTextFieldC().getText()));
-		linealCongruency.setG(Double.parseDouble(jDialogLinealCongruency.getjTextFieldG().getText()));
-		linealCongruency.calculateLinealCong(linealCongruency.getXo());
-		jDialogLinealCongruency.getjTableLinealCongruency().addListCongruency(linealCongruency.getListData());
+		if (jDialogLinealCongruency.getjTextFieldX0().getText().isEmpty() ||  
+			jDialogLinealCongruency.getjTextFieldK().getText().isEmpty() ||
+			jDialogLinealCongruency.getjTextFieldC().getText().isEmpty() ||
+			jDialogLinealCongruency.getjTextFieldG().getText().isEmpty() ) {
+			JOptionPane.showMessageDialog(null, "por favor ingresar todos los datos numericos ;)");
+		}else {
+			jDialogLinealCongruency.setVisible(true);
+			linealCongruency.setXo(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText()));
+			linealCongruency.setK(Double.parseDouble(jDialogLinealCongruency.getjTextFieldK().getText()));
+			linealCongruency.setC(Double.parseDouble(jDialogLinealCongruency.getjTextFieldC().getText()));
+			linealCongruency.setG(Double.parseDouble(jDialogLinealCongruency.getjTextFieldG().getText()));
+			linealCongruency.calculateLinealCong(linealCongruency.getXo());
+			jDialogLinealCongruency.getjTableLinealCongruency().addListCongruency(linealCongruency.getListData());
+		}
 	}
 
 	private void manageCongLin() {
