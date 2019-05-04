@@ -2,6 +2,7 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -33,12 +34,11 @@ public class JDialogLinealCongruency extends JDialog{
 						Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4)));
 		this.setLocationRelativeTo(null);
 		this.setLayout(new FlowLayout());
-		this.setResizable(false);
+//		this.setResizable(false);
 		init();
 	}
 
 	private void init() {
-		JScrollPane scrollPane = new JScrollPane();
 		JPanel jPanel = new JPanel();
 		jPanel.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/5));
 		
@@ -76,10 +76,10 @@ public class JDialogLinealCongruency extends JDialog{
 		
 		
 		jTableLinealCongruency = new JTableLinealCongruency();
-		scrollPane.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()*3-this.getHeight()/4));
-		scrollPane.setViewportView(jTableLinealCongruency);
-		this.add(jPanel );
-		this.add(scrollPane);
+		
+		jTableLinealCongruency.setPreferredSize(new Dimension((int)this.getWidth()-40, (this.getHeight()- (this.getHeight()/4))));
+		this.add(jPanel);
+		this.add(jTableLinealCongruency);
 	}
 	
 	public LinealCongruency getCongruencyData() {

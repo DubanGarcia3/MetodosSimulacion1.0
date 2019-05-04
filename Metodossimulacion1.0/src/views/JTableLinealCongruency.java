@@ -24,7 +24,7 @@ public class JTableLinealCongruency extends JPanel{
 	
 	private JTable jTable;
 	private DefaultTableModel dtm;
-//	private JScrollPane jsp;
+	private JScrollPane jsp;
 	
 	public JTableLinealCongruency(){
 		initComponents();
@@ -32,36 +32,39 @@ public class JTableLinealCongruency extends JPanel{
 	
 	public void initComponents(){		
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		this.setBackground(Color.decode("#00000"));
+		this.setBackground(Color.decode("#E0F8E6"));
 		
 		dtm = new DefaultTableModel();
 		upDate();
 		
-		Font fontHeader = new Font("Franklin Ghotic Demi" , Font.ITALIC ,14);
-				
-		jTable = new JTable();
+		Font fontHeader = new Font("Franklin Ghotic Demi" , Font.ITALIC ,20);
+		Font font = new Font("Arial" , Font.PLAIN ,17);
+		jTable = new JTable(){
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable(int row, int column){  
+				return false;  
+			}
+		};;
 		jTable.setModel(dtm);
 		jTable.getTableHeader().setReorderingAllowed(false);
 		jTable.getTableHeader().setBackground(Color.decode("#282E33"));
 		jTable.getTableHeader().setForeground(Color.white);
 		jTable.getTableHeader().setFont(fontHeader);
+		jTable.setFont(font);
 		jTable.setBackground(Color.white);
 		jTable.setBorder(null);
 		
-//		jsp = new JScrollPane(jTable);
-//		jsp.setForeground(Color.white);
-//		jsp.setBorder(null);
-//		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
+		jsp = new JScrollPane(jTable);
+		jsp.setForeground(Color.white);
+		jsp.setBorder(null);
+		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-//		add(jsp, BorderLayout.PAGE_END);
-		add(jTable);
+		add(jsp, BorderLayout.PAGE_END);
 		this.setBorder(null);
 	}
 	
 	public void upDate(){
-//		propertiesTitle = controller.getPropertiesTitle();
-//		String [] headers= {propertiesTitle.getProperty(Constans.IMAGE),propertiesTitle.getProperty(Constans.T_D_NOMBRE),propertiesTitle.getProperty(Constans.T_TYPE) , propertiesTitle.getProperty(Constans.T_D_QUALIFICATION) };
-//		dtm.setColumnIdentifiers(headers);
 		String [] head = { "ID", "Xi", "Ri"};
 		dtm.setColumnIdentifiers(head);
 	}
@@ -83,8 +86,7 @@ public class JTableLinealCongruency extends JPanel{
 	public void clearTable(){
         try {
         	dtm =(DefaultTableModel) jTable.getModel();
-            int filas=jTable.getRowCount();
-            for (int i = 0;filas>i; i++) {
+            for (int i = 0;jTable.getRowCount()>i; i++) {
             	dtm.removeRow(0);
             }
         } catch (Exception e) {
