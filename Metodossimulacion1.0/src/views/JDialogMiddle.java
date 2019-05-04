@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -67,4 +68,16 @@ public class JDialogMiddle extends JDialog {
 	public void messagge(Boolean value) {
 		jPanelMiddleTop.messagge(value);
 	}
+	
+	public void clearTable(){
+        try {
+           model=(DefaultTableModel) table.getModel();
+            int filas=table.getRowCount();
+            for (int i = 0;filas>i; i++) {
+            	model.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
 }

@@ -80,6 +80,7 @@ public class Controller implements ActionListener {
 	private void loadSeed() {
 		if(jDialogMiddle.statusSeed() == true) {
 				try {
+					jDialogMiddle.clearTable();
 					calculate(jDialogMiddle.getSeed());
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Se totie");
