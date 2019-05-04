@@ -59,6 +59,44 @@ public class LinealCongruency {
 	public void setListData(ArrayList<Congruency> listData) {
 		this.listData = listData;
 	}
-	
-	
+
+	public double getXo() {
+		return xo;
+	}
+
+	public void setXo(double xo) {
+		this.xo = xo;
+	}
+
+	public double getK() {
+		return k;
+	}
+
+	public void setK(double k) {
+		this.k = k;
+	}
+
+	public double getC() {
+		return c;
+	}
+
+	public void setC(double c) {
+		this.c = c;
+	}
+
+	public double getG() {
+		return g;
+	}
+
+	public void setG(double g) {
+		this.g = g;
+	}
+
+	public void setA(double a) {
+		this.a = a;
+	}
+
+	public void setM(double m) {
+		this.m = m;
+	}
 }

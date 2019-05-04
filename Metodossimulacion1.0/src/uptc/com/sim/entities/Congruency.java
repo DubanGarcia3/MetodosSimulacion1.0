@@ -12,7 +12,6 @@ public class Congruency {
 		this.id = ID_BASE++;
 		this.xi = xi;
 		this.ri = ri;
-		this.id = id;
 	}
 
 	//ri.add(xi.get(i)/(m-1))
@@ -50,5 +49,4 @@ public class Congruency {
 	public String toString() {
 		return "id=" + id + "	xi=" + xi + "	 ri=" + ri ;
 	}
-	
 }

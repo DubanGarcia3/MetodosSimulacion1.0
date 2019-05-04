@@ -16,7 +16,7 @@ public class JPanelCenter  extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private JButton jButtonMiddle;
-	private JButton jButtonCongruency;
+	private JButton jButtonCongruency, jButtonCongruencyMulti;
 	private JButton jButtonDistribution;
 	private GridBagConstraints gbc;
 	
@@ -58,5 +58,17 @@ public class JPanelCenter  extends JPanel{
 		gbc.weightx = 1;
 		gbc.weighty = 1;
 		add(jButtonDistribution, gbc);
+		
+		jButtonCongruencyMulti = new JButton("Congruencia Multi.");
+		jButtonCongruencyMulti.setFocusable(false);
+		jButtonCongruencyMulti.setBackground(Color.WHITE);
+		jButtonCongruencyMulti.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButtonCongruencyMulti.addActionListener(controller);
+		jButtonCongruencyMulti.setActionCommand(Action.CONG_MUL.toString());
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		add(jButtonCongruencyMulti,gbc);
 	}
 }
