@@ -18,15 +18,13 @@ public class Controller implements ActionListener {
 	private JFramePrincipal jFramePrincipal;
 	private JDialogMiddle jDialogMiddle;
 	private JDialogLinealCongruency jDialogLinealCongruency;
-	private JDialogInputLinearCongruency jDialogInputLinearCongruency;
 	private LinealCongruency linealCongruency;
 
 	public Controller() {
 		this.linealCongruency = new LinealCongruency(1,2,6,3);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
-		this.jDialogLinealCongruency = new JDialogLinealCongruency();
-		this.jDialogInputLinearCongruency = new JDialogInputLinearCongruency(this);
+		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
 	}
 
 	public void run() {
@@ -61,20 +59,18 @@ public class Controller implements ActionListener {
 	}
 
 	private void generateListCongLin() {
-		jDialogInputLinearCongruency.setVisible(false);
 		jDialogLinealCongruency.setVisible(true);
-		linealCongruency.setXo(Double.parseDouble(jDialogInputLinearCongruency.getjTextFieldX0().getText()));
-		linealCongruency.setK(Double.parseDouble(jDialogInputLinearCongruency.getjTextFieldK().getText()));
-		linealCongruency.setC(Double.parseDouble(jDialogInputLinearCongruency.getjTextFieldC().getText()));
-		linealCongruency.setG(Double.parseDouble(jDialogInputLinearCongruency.getjTextFieldG().getText()));
+		linealCongruency.setXo(Double.parseDouble(jDialogLinealCongruency.getjTextFieldX0().getText()));
+		linealCongruency.setK(Double.parseDouble(jDialogLinealCongruency.getjTextFieldK().getText()));
+		linealCongruency.setC(Double.parseDouble(jDialogLinealCongruency.getjTextFieldC().getText()));
+		linealCongruency.setG(Double.parseDouble(jDialogLinealCongruency.getjTextFieldG().getText()));
 		linealCongruency.calculateLinealCong(linealCongruency.getXo());
 		jDialogLinealCongruency.getjTableLinealCongruency().addListCongruency(linealCongruency.getListData());
 	}
 
 	private void manageCongLin() {
-		jDialogInputLinearCongruency.setVisible(true);
-		jDialogInputLinearCongruency.initLinear();
-		jDialogInputLinearCongruency.cleanAll();
+		jDialogLinealCongruency.setVisible(true);
+		jDialogLinealCongruency.cleanAll();
 	}
 
 	private void loadSeed() {

@@ -36,32 +36,7 @@ public class JDialogInputLinearCongruency extends JDialog{
 	}
 	
 	public void initLinear() {
-		jTextFieldX0 = new MyJTextField("Valor Xo");
-		jTextFieldK = new MyJTextField("valor K");
-		jTextFieldG = new MyJTextField("valor G");
-		jTextFieldC = new MyJTextField("Valor C");
 		
-		
-		jButton = new JButton("Generar");
-		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));
-		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/2));
-		
-		jPanel1.add(jTextFieldX0);
-		jPanel1.add(jTextFieldK);
-		jPanel1.add(jTextFieldG);
-		jPanel1.add(jTextFieldC);
-		
-		JPanel jPanelBtn = new JPanel();
-		
-		jButton.setFocusable(false);
-		jButton.setBackground(Color.WHITE);
-		jButton.setFont(new Font("Arial", Font.PLAIN, 16));
-		jButton.addActionListener(controller);
-		jButton.setActionCommand(Action.BTN_GENERATE_CONG_LIN.name());
-		jPanelBtn.add(jButton);
-		
-		this.add(jPanel1,BorderLayout.CENTER);
-		this.add(jPanelBtn, BorderLayout.SOUTH);
 	}
 	
 	public void initMulti() {
@@ -95,18 +70,7 @@ public class JDialogInputLinearCongruency extends JDialog{
 		this.add(jPanelBtn, BorderLayout.SOUTH);
 	}
 
-	public LinealCongruency getCongruencyData() {
-		return new LinealCongruency(Double.parseDouble(jTextFieldX0.getText()), 
-				Double.parseDouble(jTextFieldK.getText()), Double.parseDouble(jTextFieldC.getText()), 
-				Double.parseDouble(jTextFieldG.getText()));
-	}
 	
-	public void cleanAll() {
-		jTextFieldX0.setText(""); 
-		jTextFieldK.setText("");
-		jTextFieldG.setText(""); 
-		jTextFieldC.setText("");
-	}
 
 	public MyJTextField getjTextFieldX0() {
 		return jTextFieldX0;
@@ -139,5 +103,28 @@ public class JDialogInputLinearCongruency extends JDialog{
 	public void setjTextFieldC(MyJTextField jTextFieldC) {
 		this.jTextFieldC = jTextFieldC;
 	}
-	
+
+	public JButton getjButton() {
+		return jButton;
+	}
+
+	public void setjButton(JButton jButton) {
+		this.jButton = jButton;
+	}
+
+	public JButton getjButton2() {
+		return jButton2;
+	}
+
+	public void setjButton2(JButton jButton2) {
+		this.jButton2 = jButton2;
+	}
+
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
 }
