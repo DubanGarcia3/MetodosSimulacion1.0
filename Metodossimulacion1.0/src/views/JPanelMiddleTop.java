@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import controller.Action;
 import controller.Controller;
@@ -32,7 +33,6 @@ public class JPanelMiddleTop extends JPanel {
 
 		this.jTextField = new JTextField(6);
 		this.jTextField.addKeyListener(new KeyListener() {
-
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char caracter = e.getKeyChar();
@@ -67,18 +67,21 @@ public class JPanelMiddleTop extends JPanel {
 		add(jButtonSend);
 	}
 	
-	public int getSeed() {
+	public Boolean statusSeed() {
 		if(jTextField.getText().isEmpty() || jTextField.getText().length() <4) {
-			return 0;
+			return false;
 		}else {
-			return Integer.parseInt(jTextField.getText());
+			return true;
 		}
-		
 	}
 	
-	public void messagge(int value) {
-		if(value ==0) {
-			JOptionPane.showMessageDialog(null, "Debe ingresar una semilla valida");
+	public int getSeed() {
+		return Integer.parseInt(jTextField.getText());
+	}
+	
+	public void messagge(Boolean value) {
+		if(value == false) {
+			JOptionPane.showMessageDialog(null, "Debe ingresar una semilla valida", "Aviso!", JOptionPane.QUESTION_MESSAGE);
 		}
 	}
 }

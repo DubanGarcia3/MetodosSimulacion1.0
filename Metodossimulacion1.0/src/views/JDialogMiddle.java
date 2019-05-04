@@ -60,7 +60,11 @@ public class JDialogMiddle extends JDialog {
 		return jPanelMiddleTop.getSeed();
 	}
 	
-	public void messagge(int value) {
+	public Boolean statusSeed() {
+		return jPanelMiddleTop.statusSeed();
+	}
+	
+	public void messagge(Boolean value) {
 		jPanelMiddleTop.messagge(value);
 	}
 }

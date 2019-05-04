@@ -74,7 +74,12 @@ public class Controller implements ActionListener {
 	}
 
 	private void loadSeed() {
-		calculate(jDialogMiddle.getSeed());
+		if(jDialogMiddle.statusSeed() == true) {
+			calculate(jDialogMiddle.getSeed());
+		}else {
+			jDialogMiddle.messagge(jDialogMiddle.statusSeed());
+		}
+		
 	}
 	
 	private void calculate(int initial) {
