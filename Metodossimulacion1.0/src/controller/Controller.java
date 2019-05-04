@@ -83,6 +83,7 @@ public class Controller implements ActionListener {
 	}
 	
 	private void calculate(int initial) {
+		try {
 			int seed = initial;
 			int potency = (int) Math.pow(seed, 2);
 			String extent = String.valueOf(potency);
@@ -92,6 +93,11 @@ public class Controller implements ActionListener {
 			Register register = new Register(seed, potency, length, getChain(addZero), calculateRi(addZero));
 			jDialogMiddle.addRow(register);
 			calculate(getChain(addZero));
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			 JOptionPane.showMessageDialog(null, "El algoritmo se autodestruyo"+e.getMessage());
+			}	
 	}
 	
 	private String addZero(int length, String extent) {
