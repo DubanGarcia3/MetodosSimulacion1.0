@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.Register;
-import views.JDialogInputLinearCongruency;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JFramePrincipal;
