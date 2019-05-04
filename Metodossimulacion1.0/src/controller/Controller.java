@@ -73,6 +73,8 @@ public class Controller implements ActionListener {
 
 	private void manageCongLin() {
 		jDialogInputLinearCongruency.setVisible(true);
+		jDialogInputLinearCongruency.initLinear();
+		jDialogInputLinearCongruency.cleanAll();
 	}
 
 	private void loadSeed() {
@@ -95,7 +97,7 @@ public class Controller implements ActionListener {
 		int value = (8-length);
 		String completeChain =extent;
 		for (int i = 0; i < value; i++) {
-			 completeChain= "0"+completeChain;
+			 completeChain= "0" + completeChain;
 		}
 		return  completeChain;
 	}

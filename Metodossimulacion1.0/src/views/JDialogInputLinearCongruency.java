@@ -17,28 +17,39 @@ import uptc.com.sim.entities.LinealCongruency;
 
 public class JDialogInputLinearCongruency extends JDialog{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6303358847758635428L;
 	private MyJTextField jTextFieldX0, jTextFieldK, jTextFieldG, jTextFieldC;
-	private JButton jButton;
+	private JButton jButton, jButton2;
 	private Controller controller;
 	
 	public JDialogInputLinearCongruency(Controller controller) {
 		this.controller = controller;
-		jTextFieldX0 = new MyJTextField("Valor Xo");
-		jTextFieldK = new MyJTextField("valor K");
-		jTextFieldG = new MyJTextField("valor G");
-		jTextFieldC = new MyJTextField("Valor C");
-		jButton = new JButton("Generar");
 		
 		this.setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/3,
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight()/3)));
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		this.init();
+//		this.initLinear();
 	}
 	
-	private void init() {
+	public void initLinear() {
+		jTextFieldX0 = new MyJTextField("Valor Xo");
+		jTextFieldK = new MyJTextField("valor K");
+		jTextFieldG = new MyJTextField("valor G");
+		jTextFieldC = new MyJTextField("Valor C");
+		
+		jTextFieldX0.setFocusable(false);
+		jTextFieldK.setFocusable(false);
+		jTextFieldG.setFocusable(false);
+		jTextFieldC.setFocusable(false);
+		
+		jButton = new JButton("Generar");
 		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));
-//		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-20, this.getHeight()/2));
+		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/2));
+		
 		jPanel1.add(jTextFieldX0);
 		jPanel1.add(jTextFieldK);
 		jPanel1.add(jTextFieldG);
@@ -56,11 +67,49 @@ public class JDialogInputLinearCongruency extends JDialog{
 		this.add(jPanel1,BorderLayout.CENTER);
 		this.add(jPanelBtn, BorderLayout.SOUTH);
 	}
+	
+	public void initMulti() {
+		jTextFieldX0 = new MyJTextField("Valor Xo");
+		jTextFieldK = new MyJTextField("valor t");
+		jTextFieldG = new MyJTextField("valor d");
+		
+		jTextFieldX0.setFocusable(false);
+		jTextFieldK.setFocusable(false);
+		jTextFieldG.setFocusable(false);
+		
+		jButton2 = new JButton("Generar");
+
+		
+		JPanel jPanel1 = new JPanel(new GridLayout(2,2,10,10));
+		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/2));
+		jPanel1.add(jTextFieldX0);
+		jPanel1.add(jTextFieldK);
+		jPanel1.add(jTextFieldG);
+		
+		JPanel jPanelBtn = new JPanel();
+		
+		jButton2.setFocusable(false);
+		jButton2.setBackground(Color.WHITE);
+		jButton2.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButton2.addActionListener(controller);
+		jButton2.setActionCommand(Action.BTN_GENERATE_CONG_MULTI.name());
+		jPanelBtn.add(jButton);
+		
+		this.add(jPanel1,BorderLayout.CENTER);
+		this.add(jPanelBtn, BorderLayout.SOUTH);
+	}
 
 	public LinealCongruency getCongruencyData() {
 		return new LinealCongruency(Double.parseDouble(jTextFieldX0.getText()), 
 				Double.parseDouble(jTextFieldK.getText()), Double.parseDouble(jTextFieldC.getText()), 
 				Double.parseDouble(jTextFieldG.getText()));
+	}
+	
+	public void cleanAll() {
+		jTextFieldX0.setText(""); 
+		jTextFieldK.setText("");
+		jTextFieldG.setText(""); 
+		jTextFieldC.setText("");
 	}
 
 	public MyJTextField getjTextFieldX0() {
