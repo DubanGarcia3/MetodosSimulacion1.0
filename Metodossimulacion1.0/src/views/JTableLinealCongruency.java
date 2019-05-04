@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -78,6 +79,18 @@ public class JTableLinealCongruency extends JPanel{
 			}
 		}
 	}
+	
+	public void clearTable(){
+        try {
+        	dtm =(DefaultTableModel) jTable.getModel();
+            int filas=jTable.getRowCount();
+            for (int i = 0;filas>i; i++) {
+            	dtm.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
 
 	public DefaultTableModel getDtm() {
 		return dtm;

@@ -56,6 +56,7 @@ public class Controller implements ActionListener {
 	}
 
 	private void generateListCongLin() {
+		jDialogLinealCongruency.getjTableLinealCongruency().clearTable();
 		if (jDialogLinealCongruency.getjTextFieldX0().getText().isEmpty() ||  
 			jDialogLinealCongruency.getjTextFieldK().getText().isEmpty() ||
 			jDialogLinealCongruency.getjTextFieldC().getText().isEmpty() ||
@@ -75,6 +76,7 @@ public class Controller implements ActionListener {
 	private void manageCongLin() {
 		jDialogLinealCongruency.setVisible(true);
 		jDialogLinealCongruency.cleanAll();
+		jDialogLinealCongruency.getjTableLinealCongruency().clearTable();
 	}
 
 	private void loadSeed() {
