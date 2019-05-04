@@ -88,7 +88,7 @@ public class JTableLinealCongruency extends JPanel{
             	dtm.removeRow(0);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla");
         }
     }
 

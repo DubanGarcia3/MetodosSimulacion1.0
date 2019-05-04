@@ -90,7 +90,6 @@ public class Controller implements ActionListener {
 		}else {
 			jDialogMiddle.messagge(jDialogMiddle.statusSeed());
 		}
-		
 	}
 	
 	private void calculate(int initial) throws Exception{
