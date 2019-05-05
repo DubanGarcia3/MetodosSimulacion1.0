@@ -87,12 +87,12 @@ public class StockingTest {
 
 	public double getAverage() {
 		double aux =0;
-		for (int i = 0; i < listNi.size(); i++) {
-			if (listNi.get(i) != null) {
-				aux+= listNi.get(i).doubleValue();
+		for (int i = 0; i < listNormalized.size(); i++) {
+			if (listNormalized.get(i) != null) {
+				aux+= listNormalized.get(i).doubleValue();
 			}
 		}
-		return aux/listNi.size();
+		return aux/listNormalized.size();
 	}
 
 	public void setAverage(double average) {
