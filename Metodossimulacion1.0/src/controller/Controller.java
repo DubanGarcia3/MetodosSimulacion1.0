@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import persistence.FileManager;
+import proof.StockingTest;
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.Register;
 import views.JDialogDistributionUn;
@@ -19,8 +21,12 @@ public class Controller implements ActionListener {
 	private JDialogLinealCongruency jDialogLinealCongruency;
 	private LinealCongruency linealCongruency;
 	private JDialogDistributionUn jDialogDistributionUn;
+	private FileManager fileManager;
+	private StockingTest stockingTest;
 
 	public Controller() {
+		this.fileManager = new FileManager();
+		this.stockingTest = new StockingTest(5, 1, 0.95, 1.);
 		this.linealCongruency = new LinealCongruency(1,2,6,3);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
