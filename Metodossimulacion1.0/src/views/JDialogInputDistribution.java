@@ -52,13 +52,13 @@ public class JDialogInputDistribution extends JDialog{
 		gbc.weighty = 1;
 		add(jLabelQuantity, gbc);
 		
-		jTextFieldQuantity = new JTextField(5);
+		jTextFieldQuantity = new JTextField(7);
 		jTextFieldQuantity.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char caracter = e.getKeyChar();
 
-				if (jTextFieldQuantity.getText().length() == 4) {
+				if (jTextFieldQuantity.getText().length() == 6) {
 					e.consume();
 				}
 				if(((caracter < '0') ||

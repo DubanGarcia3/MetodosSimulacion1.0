@@ -1,13 +1,27 @@
 package uptc.com.sim.entities;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class ManagerDistribution {
 	
 	private Distribution distribution;
+	private ArrayList<Double> ni;
 	
 	public ManagerDistribution() {
-		
+		ni = new ArrayList<Double>();
+	}
+	
+	public ArrayList<Double> getNi() {
+		return ni;
+	}
+
+	public void setNi(ArrayList<Double> ni) {
+		this.ni = ni;
+	}
+
+	public void addNi(double value) {
+		ni.add(value);
 	}
 	
 	public Distribution getDistribution() {
