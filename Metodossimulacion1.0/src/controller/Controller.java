@@ -138,7 +138,7 @@ public class Controller implements ActionListener {
 	
 	private void calculateFrequency(double initial, double max, double min, double quanty) {
 		double theEnd = initial+(max-min)/quanty;
-		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(initial, theEnd), (managerDistribution.getNi().size()/14), 1.8));
+		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(initial, theEnd), 8, 1.8));
 	}
 	
 	private int frequencyObtained(double initial, double theEnd) {
@@ -176,6 +176,7 @@ public class Controller implements ActionListener {
 					""+stockingTest.getAverage(), ""+stockingTest.getHalfA(), ""+stockingTest.getZ(), ""+stockingTest.getLi(),
 					""+stockingTest.getLs(), ""+stockingTest.getMin(), ""+stockingTest.getMax());
 		} catch (IOException e) {
+			//dddsjshsjhshjsj
 			System.out.println(e);
 		}
 	}
