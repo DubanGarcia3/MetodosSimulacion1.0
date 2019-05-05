@@ -170,4 +170,22 @@ public class JDialogInputDistribution extends JDialog{
 		gbc.weighty = 3;
 		add(jButtonInput, gbc);
 	}
+	
+	public void clearFields() {
+		jTextFieldA.setText("");
+		jTextFieldB.setText("");
+		jTextFieldQuantity.setText("");
+	}
+	
+	public int getA() {
+		return Integer.parseInt(jTextFieldA.getText());
+	}
+	
+	public int getB() {
+		return Integer.parseInt(jTextFieldB.getText());
+	}
+	
+	public int getQuantity() {
+		return Integer.parseInt(jTextFieldQuantity.getText());
+	}
 }
