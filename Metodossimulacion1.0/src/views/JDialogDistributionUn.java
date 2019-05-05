@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
+import uptc.com.sim.entities.Distribution;
+import uptc.com.sim.entities.Register;
 
 public class JDialogDistributionUn extends JDialog{
 
@@ -67,5 +69,9 @@ public class JDialogDistributionUn extends JDialog{
 	
 	public void setText(String tittle, String min, String max) {
 		jPanelTopDistribution.setText(tittle, min, max);
+	}
+	
+	public void addRow(Distribution distribution){
+		model.addRow(distribution.getData());
 	}
 }

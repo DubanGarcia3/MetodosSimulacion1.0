@@ -32,6 +32,7 @@ public class JDialogInputDistribution extends JDialog{
 	
 	public JDialogInputDistribution(Controller controller) {
 		setIconImage(new ImageIcon(getClass().getResource(ConstansUI.PATH_IMAGE_PERFIL)).getImage());
+		getContentPane().setBackground(Color.decode("#A2DD2E"));
 		setSize(ConstansUI.SIZE_WINDOW_DIALOG_INPUT_X, ConstansUI.SIZE_WINDOW_DIALOG_INPUT_Y);
 		setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_INPUT_VALUES);
 		setLocationRelativeTo(null);
