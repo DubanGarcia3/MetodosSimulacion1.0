@@ -1,7 +1,5 @@
 package uptc.com.sim.entities;
 
-import java.security.SecureRandom;
-
 public class Distribution {
 	
 	private static int no = 0;

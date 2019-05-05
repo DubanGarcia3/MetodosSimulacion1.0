@@ -15,18 +15,18 @@ import javax.swing.table.DefaultTableModel;
 
 import uptc.com.sim.entities.Congruency;
 
-public class JTableLinealCongruency extends JPanel{
-	
+public class JTableStocking extends JPanel{
+
 	/**
 	 * @author Duban
+	 * @author Miller
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private JTable jTable;
 	private DefaultTableModel dtm;
 	private JScrollPane jsp;
 	
-	public JTableLinealCongruency(){
+	public JTableStocking(){
 		initComponents();
 	}
 	
@@ -45,7 +45,7 @@ public class JTableLinealCongruency extends JPanel{
 			public boolean isCellEditable(int row, int column){  
 				return false;  
 			}
-		};;
+		};
 		jTable.setModel(dtm);
 		jTable.getTableHeader().setReorderingAllowed(false);
 		jTable.getTableHeader().setBackground(Color.decode("#282E33"));
@@ -65,7 +65,7 @@ public class JTableLinealCongruency extends JPanel{
 	}
 	
 	public void upDate(){
-		String [] head = { "ID", "Xi", "Ri"};
+		String [] head = { "Variables Ni", "Variables Normalizadas"};
 		dtm.setColumnIdentifiers(head);
 	}
 	
@@ -109,4 +109,5 @@ public class JTableLinealCongruency extends JPanel{
 	public void setjTable(JTable jTable) {
 		this.jTable = jTable;
 	}
+
 }

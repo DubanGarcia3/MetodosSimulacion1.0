@@ -2,17 +2,17 @@ package proof;
 
 import java.util.ArrayList;
 
+import uptc.com.sim.entities.Stocking;
+
 public class StockingTest {
 	
 	private double media, desvest, acceptMargin, alpha, n, average, halfA, z,
 	li, ls, min, max;
 	
-	private ArrayList<Double> listNi;
-	private ArrayList<Double> listNormalized;
+	private ArrayList<Stocking> listStocking;
 
 	public StockingTest(double media, double desvest, double acceptMargin, double z) {
-		this.listNi = new ArrayList<Double>();
-		this.listNormalized = new ArrayList<Double>();
+		this.listStocking = new ArrayList<Stocking>();
 		this.media = media;
 		this.desvest = desvest;
 		this.acceptMargin = acceptMargin;
@@ -28,22 +28,18 @@ public class StockingTest {
 	}
 	
 	public void createTableNormalized() {
-		for (Double double1 : listNi) {
-			listNormalized.add((double1 - this.getMin())/(this.getMax()-this.getMin()));
+		for (Stocking stocking : listStocking) {
+			stocking.setNormalized((stocking.getNi() - this.getMin())/(this.getMax()-this.getMin()));
 		}
+	}
+	public void replaceListNi(double list, int index) {
+			listStocking.get(index).setNi(list);
 	}
 	
 	public boolean validateData() {
 		return this.getAverage() > this.getLi() && this.getAverage() < this.getLs();
 	}
 	
-	public ArrayList<Double> getListNormalized() {
-		return listNormalized;
-	}
-
-	public void setListNormalized(ArrayList<Double> listNormalized) {
-		this.listNormalized = listNormalized;
-	}
 
 	public double getMedia() {
 		return media;
@@ -78,7 +74,7 @@ public class StockingTest {
 	}
 
 	public double getN() {
-		return listNi.size();
+		return listStocking.size();
 	}
 
 	public void setN(double n) {
@@ -87,12 +83,10 @@ public class StockingTest {
 
 	public double getAverage() {
 		double aux =0;
-		for (int i = 0; i < listNormalized.size(); i++) {
-			if (listNormalized.get(i) != null) {
-				aux+= listNormalized.get(i).doubleValue();
-			}
+		for (Stocking stocking : listStocking) {
+			aux += stocking.getNormalized();
 		}
-		return aux/listNormalized.size();
+		return aux/listStocking.size();
 	}
 
 	public void setAverage(double average) {
@@ -133,9 +127,9 @@ public class StockingTest {
 
 	public double getMin() {
 		double min = this.getMax();
-		for (int i = 0; i < listNi.size(); i++) {
-			if (listNi.get(i) < min) {
-				min = listNi.get(i);
+		for (int i = 0; i < listStocking.size(); i++) {
+			if (listStocking.get(i).getNi() < min) {
+				min = listStocking.get(i).getNi();
 			}
 		}
 		return min;
@@ -147,9 +141,9 @@ public class StockingTest {
 
 	public double getMax() {
 		double max = 0;
-		for (int i = 0; i < listNi.size(); i++) {
-			if (listNi.get(i) > max) {
-				max = listNi.get(i);
+		for (int i = 0; i < listStocking.size(); i++) {
+			if (listStocking.get(i).getNi() > max) {
+				max = listStocking.get(i).getNi();
 			}
 		}
 		return max;
@@ -159,11 +153,11 @@ public class StockingTest {
 		this.max = max;
 	}
 
-	public ArrayList<Double> getListNi() {
-		return listNi;
+	public ArrayList<Stocking> getListStocking() {
+		return listStocking;
 	}
 
-	public void setListNi(ArrayList<Double> listNi) {
-		this.listNi = listNi;
+	public void setListStocking(ArrayList<Stocking> listStocking) {
+		this.listStocking = listStocking;
 	}
 }

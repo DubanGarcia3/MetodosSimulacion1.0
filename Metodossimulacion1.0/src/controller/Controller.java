@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 import persistence.FileManager;
 import proof.StockingTest;
-import uptc.com.sim.entities.Distribution;
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
@@ -112,8 +111,8 @@ public class Controller implements ActionListener {
 	private void manageStockingTest() {
 		try {
 			for (int i = 0; i < fileManager.readFile().size(); i++) {
-				stockingTest.getListNi().add(Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
-				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1)));
+				stockingTest.replaceListNi((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
+				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1))), i);
 			}
 		} catch (IOException e) {
 			System.out.println(e);
