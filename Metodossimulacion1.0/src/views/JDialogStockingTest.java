@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 
 import controller.Action;
 import controller.Controller;
-import uptc.com.sim.entities.LinealCongruency;
 
 public class JDialogStockingTest extends JDialog{
 
@@ -29,7 +28,8 @@ public class JDialogStockingTest extends JDialog{
 	private MyJTextField jTextFieldMedia, jTextFieldDesvest, jTextFieldAcceptmargin, jTextFieldZ;
 	private JButton jButton, jButton2;
 	private Controller controller;
-	private JLabel jLabelAccept, jLabel2Alpha,jLabelN, jLabelAverage, jLabelHalfAlpha, jLabelz, jLabelLi, jLabelLs, jLabelMax, jLabelMin;  
+	private JLabel jLabelAccept, jLabel2Alpha,jLabelN, jLabelAverage, jLabelHalfAlpha, jLabelz, jLabelLi,
+	jLabelLs, jLabelMax, jLabelMin, jLabelPass;  
 
 	public JDialogStockingTest(Controller controller) {
 		this.controller = controller;
@@ -54,6 +54,7 @@ public class JDialogStockingTest extends JDialog{
 		jTextFieldDesvest = new MyJTextField("Desviacion estandar");
 		jTextFieldAcceptmargin = new MyJTextField("Margen de aceptación");
 		jTextFieldZ = new MyJTextField("Z");
+		
 		
 		jTextFieldMedia.setFont(font);
 		jTextFieldDesvest.setFont(font);
@@ -90,7 +91,7 @@ public class JDialogStockingTest extends JDialog{
 		this.add(jPanel);
 		this.add(jTableStocking);
 		
-		JPanel jPanel2 = new JPanel(new GridLayout(5,2));
+		JPanel jPanel2 = new JPanel(new GridLayout(6,2));
 		jPanel2.setPreferredSize(new Dimension((int)this.getWidth()-40, ( (this.getHeight()/4))-40));
 		jLabelAccept = new JLabel("Aceptación");
 		jLabel2Alpha = new JLabel("α");
@@ -102,6 +103,7 @@ public class JDialogStockingTest extends JDialog{
 		jLabelLs = new JLabel("Ls");
 		jLabelMax = new JLabel("Max");
 		jLabelMin = new JLabel("Min");
+		jLabelPass = new JLabel();
 		jLabelAccept.setFont(font);
 		jLabel2Alpha.setFont(font);
 		jLabelN.setFont(font);
@@ -112,6 +114,7 @@ public class JDialogStockingTest extends JDialog{
 		jLabelLs.setFont(font);
 		jLabelMax.setFont(font);
 		jLabelMin.setFont(font);
+		jLabelPass.setFont(font);
 		jPanel2.add(jLabelAccept);
 		jPanel2.add(jLabel2Alpha);
 		jPanel2.add(jLabelN);
@@ -122,6 +125,7 @@ public class JDialogStockingTest extends JDialog{
 		jPanel2.add(jLabelLs);
 		jPanel2.add(jLabelMax);
 		jPanel2.add(jLabelMin);
+		jPanel2.add(jLabelPass);
 		this.add(jPanel2);
 	}
 	
@@ -141,7 +145,7 @@ public class JDialogStockingTest extends JDialog{
 		jLabelLs.setText("Ls");
 		jLabelMax.setText("Max");
 		jLabelMin.setText("Min");
-		
+		jLabelPass.setText("");
 	}
 	
 	public void updateData(String accept, String alpha, String n, String promedio, String alphaMedios, String Z,
@@ -212,5 +216,13 @@ public class JDialogStockingTest extends JDialog{
 
 	public void setjTextFieldZ(MyJTextField jTextFieldZ) {
 		this.jTextFieldZ = jTextFieldZ;
+	}
+
+	public JLabel getjLabelPass() {
+		return jLabelPass;
+	}
+
+	public void setjLabelPass(JLabel jLabelPass) {
+		this.jLabelPass = jLabelPass;
 	}
 }

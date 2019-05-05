@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -184,6 +185,14 @@ public class Controller implements ActionListener {
 			jDialogStockingTest.updateData(""+stockingTest.getAcceptMargin(), ""+stockingTest.getAlpha(), ""+stockingTest.getN(),
 					""+stockingTest.getAverage(), ""+stockingTest.getHalfA(), ""+stockingTest.getZ(), ""+stockingTest.getLi(),
 					""+stockingTest.getLs(), ""+stockingTest.getMin(), ""+stockingTest.getMax());
+			
+			if (stockingTest.getAverage() >= stockingTest.getLi() && stockingTest.getAverage() <= stockingTest.getLs()) {
+				jDialogStockingTest.getjLabelPass().setForeground(Color.GREEN);
+				jDialogStockingTest.getjLabelPass().setText("LOS DATOS PASAN LA PRUEBA ");
+			}else {
+				jDialogStockingTest.getjLabelPass().setForeground(Color.RED);
+				jDialogStockingTest.getjLabelPass().setText("LOS DATOS NO PASAN LA PRUEBA");
+			}
 		} catch (IOException e) {
 			//dddsjshsjhshjsj
 			System.out.println(e);
