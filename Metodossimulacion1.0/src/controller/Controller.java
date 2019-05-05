@@ -97,11 +97,15 @@ public class Controller implements ActionListener {
 	}
 
 	private void manageStockingTest() {
+		ArrayList<String> aux = new ArrayList<String>();
 		try {
 			for (int i = 0; i < fileManager.readFile().size(); i++) {
-				stockingTest.getListNi().add(Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i), ","))));
+				stockingTest.getListNi().add(Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
+				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1)));
 			}
-			
+			for (int i = 0; i < stockingTest.getListNi().size(); i++) {
+				System.out.println(stockingTest.getListNi().get(i));
+			}
 		} catch (IOException e) {
 			System.out.println(e);
 		}
