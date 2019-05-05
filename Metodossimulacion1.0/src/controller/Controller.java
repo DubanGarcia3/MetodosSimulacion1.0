@@ -94,11 +94,12 @@ public class Controller implements ActionListener {
 		case APPLY_CHI:
 			applyChi();
 			break;
+		case BTN_VALID_DATA:
+			validStockingData();
 		default:
 			break;
 		}
 	}
-	
 	
 
 	private void generateValuesForDistribution() {
@@ -124,6 +125,9 @@ public class Controller implements ActionListener {
 	
 	private void applyChi() {
 		jDialogDistriChi.setVisible(true);
+	}
+	
+	private void validStockingData() {
 	}
 
 	private void generateStockingTest() {

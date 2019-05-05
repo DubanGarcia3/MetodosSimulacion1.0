@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Action;
@@ -28,6 +29,7 @@ public class JDialogStockingTest extends JDialog{
 	private MyJTextField jTextFieldMedia, jTextFieldDesvest, jTextFieldAcceptmargin, jTextFieldZ;
 	private JButton jButton, jButton2;
 	private Controller controller;
+	private JLabel jLabelN, jLabelAverage, jLabelHalfAlpha, jLabelz, jLabelLi, jLabelLs, jLabel, jLabelMin;  
 
 	public JDialogStockingTest(Controller controller) {
 		this.controller = controller;
@@ -43,7 +45,7 @@ public class JDialogStockingTest extends JDialog{
 		init();
 	}
 
-	private void init() {
+	public void init() {
 		JPanel jPanel = new JPanel();
 		jPanel.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/5));
 		
@@ -58,7 +60,8 @@ public class JDialogStockingTest extends JDialog{
 		jTextFieldAcceptmargin.setFont(font);
 		jTextFieldZ.setFont(font);
 		
-		jButton = new JButton("Generar");
+		jButton = new JButton("   Generar   ");
+		jButton2 = new JButton("Validar datos");
 		JPanel jPanel1 = new JPanel(new GridLayout(2,2,5,5));
 		jPanel1.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/8));
 		
@@ -67,7 +70,7 @@ public class JDialogStockingTest extends JDialog{
 		jPanel1.add(jTextFieldAcceptmargin);
 		jPanel1.add(jTextFieldZ);
 		
-		JPanel jPanelBtn = new JPanel();
+		JPanel jPanelBtn = new JPanel(new FlowLayout());
 		
 		jButton.setFocusable(false);
 		jButton.setBackground(Color.WHITE);
@@ -75,6 +78,14 @@ public class JDialogStockingTest extends JDialog{
 		jButton.addActionListener(controller);
 		jButton.setActionCommand(Action.BTN_GENERATE_STACKING.name());
 		jPanelBtn.add(jButton);
+		
+		jButton2.setFocusable(false);
+		jButton2.setBackground(Color.WHITE);
+		jButton2.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButton2.setVisible(false);
+		jButton2.addActionListener(controller);
+		jButton2.setActionCommand(Action.BTN_VALID_DATA.name());
+		jPanelBtn.add(jButton2);
 		
 		jPanel.add(jPanel1,BorderLayout.CENTER);
 		jPanel.add(jPanelBtn, BorderLayout.SOUTH);
@@ -85,6 +96,9 @@ public class JDialogStockingTest extends JDialog{
 		jTableStocking.setPreferredSize(new Dimension((int)this.getWidth()-40, (this.getHeight()- (this.getHeight()/4))));
 		this.add(jPanel);
 		this.add(jTableStocking);
+		
+		JPanel jPanel2 = new JPanel();
+		
 	}
 	
 	public LinealCongruency getCongruencyData() {
@@ -118,6 +132,22 @@ public class JDialogStockingTest extends JDialog{
 
 	public MyJTextField getjTextFieldDesvest() {
 		return jTextFieldDesvest;
+	}
+
+	public JButton getjButton() {
+		return jButton;
+	}
+
+	public void setjButton(JButton jButton) {
+		this.jButton = jButton;
+	}
+
+	public JButton getjButton2() {
+		return jButton2;
+	}
+
+	public void setjButton2(JButton jButton2) {
+		this.jButton2 = jButton2;
 	}
 
 	public void setjTextFieldDesvest(MyJTextField jTextFieldDesvest) {
