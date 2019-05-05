@@ -73,6 +73,5 @@ public class JPanelCenter  extends JPanel{
 		gbc.weighty = 1;
 		add(jButtonDistribution, gbc);
 		
-		
 	}
 }

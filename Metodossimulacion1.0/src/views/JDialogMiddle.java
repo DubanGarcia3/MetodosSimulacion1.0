@@ -28,6 +28,7 @@ public class JDialogMiddle extends JDialog {
 		setSize(ConstansUI.SIZE_WINDOW_X, ConstansUI.SIZE_WINDOW_SEED_Y);
 		setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_MIDDLE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setModal(true);
 		init(controller);
 	}
