@@ -33,7 +33,7 @@ public class JPanelRight extends JPanel{
 		jButtonStokingTest.setBackground(Color.WHITE);
 		jButtonStokingTest.setFont(new Font("Arial", Font.PLAIN, 16));
 		jButtonStokingTest.addActionListener(controller);
-		jButtonStokingTest.setActionCommand(Action.MIDDLE.toString());
+		jButtonStokingTest.setActionCommand(Action.STOCKING_TEST.name());
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.weightx = 1;
@@ -45,7 +45,7 @@ public class JPanelRight extends JPanel{
 		jButtonVariance.setBackground(Color.WHITE);
 		jButtonVariance.setFont(new Font("Arial", Font.PLAIN, 16));
 		jButtonVariance.addActionListener(controller);
-		jButtonVariance.setActionCommand(Action.CONG_LIN.toString());
+		jButtonVariance.setActionCommand(Action.VARIANCE.name());
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.weightx = 1;
