@@ -66,7 +66,7 @@ public class JDialogMultiCongruency extends JDialog{
 		jButton.setBackground(Color.WHITE);
 		jButton.setFont(new Font("Arial", Font.PLAIN, 16));
 		jButton.addActionListener(controller);
-		jButton.setActionCommand(Action.BTN_GENERATE_CONG_LIN.name());
+		jButton.setActionCommand(Action.BTN_GENERATE_CONG_MULTI.name());
 		jPanelBtn.add(jButton);
 
 		jPanel.add(jPanel1,BorderLayout.CENTER);
@@ -78,5 +78,43 @@ public class JDialogMultiCongruency extends JDialog{
 		this.add(jPanel);
 		this.add(jTableLinealCongruency);
 	}
+	
+	public JTableLinealCongruency getjTableLinealCongruency() {
+		return jTableLinealCongruency;
+	}
 
+	public void setjTableLinealCongruency(JTableLinealCongruency jTableLinealCongruency) {
+		this.jTableLinealCongruency = jTableLinealCongruency;
+	}
+
+	public MyJTextField getjTextFieldX0() {
+		return jTextFieldX0;
+	}
+
+	public void setjTextFieldX0(MyJTextField jTextFieldX0) {
+		this.jTextFieldX0 = jTextFieldX0;
+	}
+
+	public MyJTextField getjTextFieldT() {
+		return jTextFieldT;
+	}
+
+	public void setjTextFieldT(MyJTextField jTextFieldT) {
+		this.jTextFieldT = jTextFieldT;
+	}
+
+	public MyJTextField getjTextFieldD() {
+		return jTextFieldD;
+	}
+
+	public void setjTextFieldD(MyJTextField jTextFieldD) {
+		this.jTextFieldD = jTextFieldD;
+	}
+
+	public void cleanAll() {
+		jTextFieldX0.setText(""); 
+		jTextFieldT.setText("");
+		jTextFieldD.setText(""); 
+
+	}
 }

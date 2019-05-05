@@ -10,11 +10,13 @@ import javax.swing.JOptionPane;
 import persistence.FileManager;
 import proof.StockingTest;
 import uptc.com.sim.entities.LinealCongruency;
+import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
 import views.JDialogDistributionUn;
 import views.JDialogInputDistribution;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
+import views.JDialogMultiCongruency;
 import views.JFramePrincipal;
 
 public class Controller implements ActionListener {
@@ -22,7 +24,9 @@ public class Controller implements ActionListener {
 	private JFramePrincipal jFramePrincipal;
 	private JDialogMiddle jDialogMiddle;
 	private JDialogLinealCongruency jDialogLinealCongruency;
+	private JDialogMultiCongruency jDialogMultiCongruency;
 	private LinealCongruency linealCongruency;
+	private MultiCongruency multiCongruency;
 	private JDialogInputDistribution jDialogInputDistribution;
 	private JDialogDistributionUn jDialogDistributionUn;
 	private FileManager fileManager;
@@ -32,11 +36,13 @@ public class Controller implements ActionListener {
 		this.fileManager = new FileManager();
 		this.stockingTest = new StockingTest(5, 1, 0.95, 1.95996398);
 		this.linealCongruency = new LinealCongruency(1,2,6,3);
+		this.multiCongruency = new MultiCongruency(5, 2, 16);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
 		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
 		this.jDialogDistributionUn = new JDialogDistributionUn(this);
 		this.jDialogInputDistribution = new JDialogInputDistribution(this);
+		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
 	}
 
 	public void run() {
@@ -61,12 +67,14 @@ public class Controller implements ActionListener {
 		case CONG_MUL:
 			manageCongMulti();
 			break;
+		case BTN_GENERATE_CONG_MULTI:
+			generateListCongMulti();
+			break;
 		case DISTRIBUTION:
 			executeDistribution();
 			break;
 		case STOCKING_TEST:
 			manageStockingTest();
-			System.out.println("hola");
 			break;
 		case GENERATE_VALUES:
 			generateValuesForDistribution();
@@ -76,6 +84,8 @@ public class Controller implements ActionListener {
 		}
 	}
 	
+	
+
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
@@ -88,21 +98,21 @@ public class Controller implements ActionListener {
 	}
 
 	private void manageStockingTest() {
-		System.out.println("entra");
-		ArrayList<String> list;
-		try {
-			list = (ArrayList<String>) fileManager.readFile();
-			for (String string : list) {
-				stockingTest.getListNi().add(Double.parseDouble(string.split(",").toString()));
-			}
-			for (int i = 0; i < stockingTest.getListNi().size(); i++) {
-				if (stockingTest.getListNi().get(i) != null) {
-					System.out.println(stockingTest.getListNi().get(i).doubleValue());
-				}
-			}
-		} catch (IOException e) {
-			System.out.println(e);
-		}
+//		System.out.println("entra");
+//		ArrayList<String> list;
+//		try {
+//			list = (ArrayList<String>) fileManager.readFile();
+//			for (String string : list) {
+//				stockingTest.getListNi().add(Double.parseDouble(string.split(",").toString()));
+//			}
+//			for (int i = 0; i < stockingTest.getListNi().size(); i++) {
+//				if (stockingTest.getListNi().get(i) != null) {
+//					System.out.println(stockingTest.getListNi().get(i).doubleValue());
+//				}
+//			}
+//		} catch (IOException e) {
+//			System.out.println(e);
+//		}
 	}
 
 	private void executeDistribution() {
@@ -110,7 +120,25 @@ public class Controller implements ActionListener {
 	}
 
 	private void manageCongMulti() {
-		
+		jDialogMultiCongruency.setVisible(true);
+		jDialogMultiCongruency.cleanAll();
+		jDialogMultiCongruency.getjTableLinealCongruency().clearTable();
+	}
+	
+	private void generateListCongMulti() {
+		jDialogMultiCongruency.getjTableLinealCongruency().clearTable();
+		if (jDialogMultiCongruency.getjTextFieldX0().getText().isEmpty() ||  
+				jDialogMultiCongruency.getjTextFieldT().getText().isEmpty() ||
+				jDialogMultiCongruency.getjTextFieldD().getText().isEmpty() ) {
+			JOptionPane.showMessageDialog(null, "por favor ingresar todos los datos numericos  ;)");
+		}else {
+			jDialogMultiCongruency.setVisible(true);
+			multiCongruency.setX0(Double.parseDouble(jDialogMultiCongruency.getjTextFieldX0().getText()));
+			multiCongruency.setT(Double.parseDouble(jDialogMultiCongruency.getjTextFieldT().getText()));
+			multiCongruency.setD(Double.parseDouble(jDialogMultiCongruency.getjTextFieldD().getText()));
+			multiCongruency.calculateLinealCong(multiCongruency.getX0());
+			jDialogMultiCongruency.getjTableLinealCongruency().addListCongruency(multiCongruency.getListCongruencies());
+		}
 	}
 
 	private void generateListCongLin() {

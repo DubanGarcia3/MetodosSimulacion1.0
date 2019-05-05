@@ -86,4 +86,9 @@ public class MultiCongruency {
 	public ArrayList<Congruency> getListCongruencies() {
 		return listCongruencies;
 	}
+
+	public void setListCongruencies(ArrayList<Congruency> listCongruencies) {
+		this.listCongruencies = listCongruencies;
+	}
+
 }
