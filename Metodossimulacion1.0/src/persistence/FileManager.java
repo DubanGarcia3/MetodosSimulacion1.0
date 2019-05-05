@@ -28,4 +28,17 @@ public class FileManager {
 			}
 		}
 	}
+	
+	public static String convert(String line){
+		String aux2 ="";		
+		String aux = line;
+		for(int i=0; i<line.length(); i++){
+			if(aux.charAt(i) == '$' && aux.charAt(i-1) !='$')
+				aux2 += "$";
+			if(aux.charAt(i) != '$')
+				aux2 += aux.charAt(i);
+			
+		}
+		return aux2;
+	}
 }
