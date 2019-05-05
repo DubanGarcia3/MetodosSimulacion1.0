@@ -26,7 +26,7 @@ public class JDialogStockingTest extends JDialog{
 	
 	private JTableStocking jTableStocking;
 	private MyJTextField jTextFieldMedia, jTextFieldDesvest, jTextFieldAcceptmargin, jTextFieldZ;
-	private JButton jButton;
+	private JButton jButton, jButton2;
 	private Controller controller;
 
 	public JDialogStockingTest(Controller controller) {
