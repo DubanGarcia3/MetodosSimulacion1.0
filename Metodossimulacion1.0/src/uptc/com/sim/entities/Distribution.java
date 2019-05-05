@@ -39,14 +39,4 @@ public class Distribution {
 	public Object[] getData() {
 		return new Object[]{no, xi, ni};
 	}
-	
-	public double createRi() {
-		SecureRandom rnd = new SecureRandom();
-		return 	rnd.nextDouble();
-	}
-	
-	public double calculateNi(double random) {
-		double ni = min+((max-min)*random);
-		return ni;
-	}
 }

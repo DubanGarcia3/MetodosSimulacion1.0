@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 
 import persistence.FileManager;
 import proof.StockingTest;
+import uptc.com.sim.entities.Distribution;
 import uptc.com.sim.entities.LinealCongruency;
+import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
 import views.JDialogDistributionUn;
@@ -31,6 +33,7 @@ public class Controller implements ActionListener {
 	private JDialogDistributionUn jDialogDistributionUn;
 	private FileManager fileManager;
 	private StockingTest stockingTest;
+	private ManagerDistribution managerDistribution;
 
 	public Controller() {
 		this.fileManager = new FileManager();
@@ -43,6 +46,7 @@ public class Controller implements ActionListener {
 		this.jDialogDistributionUn = new JDialogDistributionUn(this);
 		this.jDialogInputDistribution = new JDialogInputDistribution(this);
 		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
+		this.managerDistribution = new ManagerDistribution();
 	}
 
 	public void run() {
@@ -87,6 +91,7 @@ public class Controller implements ActionListener {
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
+			loadDistributionData(Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
 			jDialogInputDistribution.setVisible(false);
 			jDialogInputDistribution.clearFields();
 			jDialogDistributionUn.setVisible(true);
@@ -95,8 +100,10 @@ public class Controller implements ActionListener {
 		}
 	}
 	
-	private void loadDistributionData() {
-		
+	private void loadDistributionData(double min, double max) {
+		double ri = managerDistribution.createRi();
+		double ni = managerDistribution.calculateNi(ri, min, max);
+		jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));
 	}
 
 	@SuppressWarnings("unused")
