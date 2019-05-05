@@ -143,7 +143,7 @@ public class Controller implements ActionListener {
 	
 	private void calculateFrequency(double initial, double max, double min, double quanty) {
 		double theEnd = initial+(max-min)/quanty;
-		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(initial, theEnd), (managerDistribution.getNi().size()/14), 1.8));
+		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(this.initial, theEnd), (managerDistribution.getNi().size()/14), 1.8));
 		this.initial = theEnd;
 	}
 	
