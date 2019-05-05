@@ -10,6 +10,10 @@ public class ManagerDistribution {
 		
 	}
 	
+	public Distribution getDistribution() {
+		return distribution;
+	}
+
 	public Distribution create(double xi, double ni) {
 		return distribution = new Distribution(xi, ni);
 	}

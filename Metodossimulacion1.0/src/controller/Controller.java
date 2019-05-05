@@ -13,6 +13,7 @@ import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
+import views.JDialogDistriChi;
 import views.JDialogDistributionUn;
 import views.JDialogInputDistribution;
 import views.JDialogLinealCongruency;
@@ -35,6 +36,7 @@ public class Controller implements ActionListener {
 	private FileManager fileManager;
 	private StockingTest stockingTest;
 	private ManagerDistribution managerDistribution;
+	private JDialogDistriChi jDialogDistriChi;
 
 	public Controller() {
 		this.fileManager = new FileManager();
@@ -48,6 +50,7 @@ public class Controller implements ActionListener {
 		this.jDialogDistributionUn = new JDialogDistributionUn(this);
 		this.jDialogInputDistribution = new JDialogInputDistribution(this);
 		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
+		this.jDialogDistriChi = new JDialogDistriChi(this);
 		this.managerDistribution = new ManagerDistribution();
 	}
 
@@ -88,7 +91,9 @@ public class Controller implements ActionListener {
 		case GENERATE_VALUES:
 			generateValuesForDistribution();
 			break;
-			
+		case APPLY_CHI:
+			applyChi();
+			break;
 		default:
 			break;
 		}
@@ -99,6 +104,7 @@ public class Controller implements ActionListener {
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
+			jDialogDistributionUn.clearTable();
 			loadDistributionData(Integer.parseInt(jDialogInputDistribution.getTextQuantity()), Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
 			jDialogInputDistribution.setVisible(false);
 			jDialogInputDistribution.clearFields();
@@ -114,6 +120,10 @@ public class Controller implements ActionListener {
 			double ni = managerDistribution.calculateNi(ri, min, max);
 			jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));			
 		}
+	}
+	
+	private void applyChi() {
+		jDialogDistriChi.setVisible(true);
 	}
 
 	private void generateStockingTest() {

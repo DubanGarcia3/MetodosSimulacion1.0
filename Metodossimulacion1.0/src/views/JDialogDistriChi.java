@@ -1,6 +1,5 @@
 package views;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -8,37 +7,36 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
-import uptc.com.sim.entities.Distribution;
-import uptc.com.sim.entities.Register;
 
-public class JDialogDistributionUn extends JDialog{
+public class JDialogDistriChi extends JDialog{
 
 	private static final long serialVersionUID = 1L;
-	private JPanelTopDistribution jPanelTopDistribution;
+	
+	private JPanelTopDistriChi jPanelTopDistriChi;
 	private DefaultTableModel model;
-	private static final String[] COLUMS = {"No","Ri","Ni"}; 
+	private static final String[] COLUMS = {"No","Inicial","Final","Frec. Obtenida", "Frec. Esperada","Chi2"}; 
 	private JTable table;
 	private JScrollPane jsp;
 	
-	public JDialogDistributionUn(Controller controller) {
+	public JDialogDistriChi(Controller controller) {
+		getContentPane().setBackground(Color.decode("#A2DD2E"));
 		setIconImage(new ImageIcon(getClass().getResource(ConstansUI.PATH_IMAGE_PERFIL)).getImage());
 		setSize(ConstansUI.SIZE_WINDOW_X, ConstansUI.SIZE_WINDOW_SEED_Y);
-		setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_DISTRIBUTION);
+		setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_MIDDLE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setModal(true);
 		init(controller);
 	}
-	
+
 	private void init(Controller controller) {
-		jPanelTopDistribution = new JPanelTopDistribution(controller);
-		add(jPanelTopDistribution, BorderLayout.NORTH);
+		jPanelTopDistriChi = new JPanelTopDistriChi(controller);
+		add(jPanelTopDistriChi, BorderLayout.NORTH);
 		
 		Font fontHeader = new Font("Franklin Ghotic Demi" , Font.ITALIC ,20);
 		Font font = new Font("Arial" , Font.PLAIN ,17);
@@ -67,24 +65,4 @@ public class JDialogDistributionUn extends JDialog{
 		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(jsp, BorderLayout.CENTER);
 	}
-	
-	public void setText(String tittle, String min, String max) {
-		jPanelTopDistribution.setText(tittle, min, max);
-	}
-	
-	public void addRow(Distribution distribution){
-		model.addRow(distribution.getData());
-	}
-	
-	public void clearTable(){
-        try {
-           model=(DefaultTableModel) table.getModel();
-            int filas=table.getRowCount();
-            for (int i = 0;filas>i; i++) {
-            	model.removeRow(0);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
-        }
-    }
 }

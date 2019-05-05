@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Action;
 import controller.Controller;
 
 
@@ -24,10 +25,10 @@ public class JPanelTopDistribution extends JPanel {
 	public JPanelTopDistribution(Controller controller) {
 		setLayout(new FlowLayout());
 		this.setBackground(Color.decode("#A2DD2E"));
-		init();
+		init(controller);
 	}
 	
-	private void init() {
+	private void init(Controller controller){
 		this.jLabelTittle = new JLabel();
 		this.jLabelTittle.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
 		add(jLabelTittle);
@@ -44,6 +45,8 @@ public class JPanelTopDistribution extends JPanel {
 		this.jButtonChiSquare.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
 		this.jButtonChiSquare.setFocusable(false);
 		this.jButtonChiSquare.setBackground(Color.WHITE);
+		this.jButtonChiSquare.addActionListener(controller);
+		this.jButtonChiSquare.setActionCommand(Action.APPLY_CHI.toString());
 		add(jButtonChiSquare);
 	}
 	
