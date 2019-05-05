@@ -26,6 +26,7 @@ public class JDialogMiddle extends JDialog {
 		getContentPane().setBackground(Color.decode("#A2DD2E"));
 		setIconImage(new ImageIcon(getClass().getResource(ConstansUI.PATH_IMAGE_PERFIL)).getImage());
 		setSize(ConstansUI.SIZE_WINDOW_X, ConstansUI.SIZE_WINDOW_SEED_Y);
+		setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_MIDDLE);
 		setLocationRelativeTo(null);
 		setModal(true);
 		init(controller);
