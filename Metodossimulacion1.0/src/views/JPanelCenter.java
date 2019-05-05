@@ -61,7 +61,7 @@ public class JPanelCenter  extends JPanel{
 		gbc.weighty = 1;
 		add(jButtonCongruencyMulti,gbc);
 		
-		jButtonDistribution = new JButton("Distribucion uniforme");
+		jButtonDistribution = new JButton("Distribucion Uni.");
 		jButtonDistribution.setFocusable(false);
 		jButtonDistribution.setBackground(Color.WHITE);
 		jButtonDistribution.setFont(new Font("Arial", Font.PLAIN, 16));
