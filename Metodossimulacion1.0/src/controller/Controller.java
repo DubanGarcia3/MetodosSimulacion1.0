@@ -18,6 +18,7 @@ import views.JDialogInputDistribution;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JDialogMultiCongruency;
+import views.JDialogStockingTest;
 import views.JFramePrincipal;
 
 public class Controller implements ActionListener {
@@ -30,6 +31,7 @@ public class Controller implements ActionListener {
 	private MultiCongruency multiCongruency;
 	private JDialogInputDistribution jDialogInputDistribution;
 	private JDialogDistributionUn jDialogDistributionUn;
+	private JDialogStockingTest jDialogStockingTest;
 	private FileManager fileManager;
 	private StockingTest stockingTest;
 	private ManagerDistribution managerDistribution;
@@ -41,6 +43,7 @@ public class Controller implements ActionListener {
 		this.multiCongruency = new MultiCongruency(5, 2, 16);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
+		this.jDialogStockingTest = new JDialogStockingTest(this);
 		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
 		this.jDialogDistributionUn = new JDialogDistributionUn(this);
 		this.jDialogInputDistribution = new JDialogInputDistribution(this);
@@ -77,16 +80,22 @@ public class Controller implements ActionListener {
 			executeDistribution();
 			break;
 		case STOCKING_TEST:
+			generateStockingTest();
+			break;
+		case BTN_GENERATE_STACKING:
 			manageStockingTest();
 			break;
 		case GENERATE_VALUES:
 			generateValuesForDistribution();
 			break;
+			
 		default:
 			break;
 		}
 	}
 	
+	
+
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
@@ -107,13 +116,24 @@ public class Controller implements ActionListener {
 		}
 	}
 
-	@SuppressWarnings("unused")
+	private void generateStockingTest() {
+		jDialogStockingTest.setVisible(true);
+		jDialogStockingTest.cleanAll();
+		jDialogStockingTest.getjTableStocking().clearTable();
+	}
+
 	private void manageStockingTest() {
+		stockingTest.setMedia(Double.parseDouble(jDialogStockingTest.getjTextFieldMedia().getText()));
+		stockingTest.setAcceptMargin(Double.parseDouble(jDialogStockingTest.getjTextFieldAcceptmargin().getText()));
+		stockingTest.setDesvest(Double.parseDouble(jDialogStockingTest.getjTextFieldDesvest().getText()));
+		stockingTest.setZ(Double.parseDouble(jDialogStockingTest.getjTextFieldZ().getText()));
 		try {
 			for (int i = 0; i < fileManager.readFile().size(); i++) {
-				stockingTest.replaceListNi((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
-				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1))), i);
+				stockingTest.add(((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
+				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1)))));
 			}
+			stockingTest.createTableNormalized();
+			jDialogStockingTest.getjTableStocking().addListStocking(stockingTest.getListStocking());
 		} catch (IOException e) {
 			System.out.println(e);
 		}

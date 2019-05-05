@@ -27,13 +27,14 @@ public class StockingTest {
 		this.max = getMax();
 	}
 	
+	public void add(double ni) {
+		listStocking.add(new Stocking(ni, 0));
+	}
+	
 	public void createTableNormalized() {
 		for (Stocking stocking : listStocking) {
 			stocking.setNormalized((stocking.getNi() - this.getMin())/(this.getMax()-this.getMin()));
 		}
-	}
-	public void replaceListNi(double list, int index) {
-			listStocking.get(index).setNi(list);
 	}
 	
 	public boolean validateData() {

@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import uptc.com.sim.entities.Congruency;
+import uptc.com.sim.entities.Stocking;
 
 public class JTableStocking extends JPanel{
 
@@ -65,7 +66,7 @@ public class JTableStocking extends JPanel{
 	}
 	
 	public void upDate(){
-		String [] head = { "Variables Ni", "Variables Normalizadas"};
+		String [] head = { "ID", "Variables Ni", "Variables Normalizadas"};
 		dtm.setColumnIdentifiers(head);
 	}
 	
@@ -74,10 +75,10 @@ public class JTableStocking extends JPanel{
 		dtm.addRow(c);
 	}
 	
-	public void addListCongruency(ArrayList<Congruency> list) {
+	public void addListStocking(ArrayList<Stocking> list) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i) != null) {
-				String[] c = { "" + list.get(i).getId(), ""+ list.get(i).getXi(), "" + list.get(i).getRi()};
+				String[] c = { "" + list.get(i).getId(), ""+ list.get(i).getNi(), "" + list.get(i).getNormalized()};
 				dtm.addRow(c);
 			}
 		}

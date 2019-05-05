@@ -18,6 +18,13 @@ public class Stocking {
 		this.ni = ni;
 		this.normalized = normalized;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Stocking [ni=" + ni + ", normalized=" + normalized + ", id=" + id + "]";
+	}
+
 
 	public double getNi() {
 		return ni;
