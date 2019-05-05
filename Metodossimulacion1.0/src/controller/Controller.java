@@ -91,7 +91,7 @@ public class Controller implements ActionListener {
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
-			loadDistributionData(Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
+			loadDistributionData(Integer.parseInt(jDialogInputDistribution.getTextQuantity()), Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
 			jDialogInputDistribution.setVisible(false);
 			jDialogInputDistribution.clearFields();
 			jDialogDistributionUn.setVisible(true);
@@ -100,10 +100,12 @@ public class Controller implements ActionListener {
 		}
 	}
 	
-	private void loadDistributionData(double min, double max) {
-		double ri = managerDistribution.createRi();
-		double ni = managerDistribution.calculateNi(ri, min, max);
-		jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));
+	private void loadDistributionData(int quantity, double min, double max) {
+		for (int i = 0; i < quantity; i++) {
+			double ri = managerDistribution.createRi();
+			double ni = managerDistribution.calculateNi(ri, min, max);
+			jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));			
+		}
 	}
 
 	@SuppressWarnings("unused")
