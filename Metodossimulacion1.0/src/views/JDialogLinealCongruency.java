@@ -34,7 +34,7 @@ public class JDialogLinealCongruency extends JDialog{
 						Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4)));
 		this.setLocationRelativeTo(null);
 		this.setLayout(new FlowLayout());
-//		this.setResizable(false);
+		this.setResizable(false);
 		init();
 	}
 

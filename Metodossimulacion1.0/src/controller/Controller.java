@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -26,7 +28,7 @@ public class Controller implements ActionListener {
 
 	public Controller() {
 		this.fileManager = new FileManager();
-		this.stockingTest = new StockingTest(5, 1, 0.95, 1.);
+		this.stockingTest = new StockingTest(5, 1, 0.95, 1.95996398);
 		this.linealCongruency = new LinealCongruency(1,2,6,3);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
@@ -59,11 +61,33 @@ public class Controller implements ActionListener {
 		case DISTRIBUTION:
 			executeDistribution();
 			break;
+		case STOCKING_TEST:
+			manageStockingTest();
+			System.out.println("hola");
+			break;
 		default:
 			break;
 		}
 	}
 	
+	private void manageStockingTest() {
+		System.out.println("entra");
+		ArrayList<String> list;
+		try {
+			list = (ArrayList<String>) fileManager.readFile();
+			for (String string : list) {
+				stockingTest.getListNi().add(Double.parseDouble(string.split(",").toString()));
+			}
+			for (int i = 0; i < stockingTest.getListNi().size(); i++) {
+				if (stockingTest.getListNi().get(i) != null) {
+					System.out.println(stockingTest.getListNi().get(i).doubleValue());
+				}
+			}
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+	}
+
 	private void executeDistribution() {
 		String value = JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
 		if(!value.isEmpty()) {
@@ -74,6 +98,7 @@ public class Controller implements ActionListener {
 	}
 
 	private void manageCongMulti() {
+		
 	}
 
 	private void generateListCongLin() {
