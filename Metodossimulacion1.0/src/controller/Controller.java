@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.Register;
+import views.JDialogDistributionUn;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JFramePrincipal;
@@ -17,12 +18,14 @@ public class Controller implements ActionListener {
 	private JDialogMiddle jDialogMiddle;
 	private JDialogLinealCongruency jDialogLinealCongruency;
 	private LinealCongruency linealCongruency;
+	private JDialogDistributionUn jDialogDistributionUn;
 
 	public Controller() {
 		this.linealCongruency = new LinealCongruency(1,2,6,3);
 		this.jFramePrincipal = new JFramePrincipal(this);
 		this.jDialogMiddle = new JDialogMiddle(this);
 		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
+		this.jDialogDistributionUn = new JDialogDistributionUn(this);
 	}
 
 	public void run() {
@@ -57,6 +60,7 @@ public class Controller implements ActionListener {
 	
 	private void executeDistribution() {
 		JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
+		jDialogDistributionUn.setVisible(true);
 	}
 
 	private void manageCongMulti() {

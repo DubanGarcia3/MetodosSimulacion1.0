@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Controller;
+
 
 public class JPanelTopDistribution extends JPanel {
 
@@ -15,7 +17,7 @@ public class JPanelTopDistribution extends JPanel {
 	private JLabel lJLabelMax;
 	private JButton jButtonChiSquare;
 	
-	public JPanelTopDistribution() {
+	public JPanelTopDistribution(Controller controller) {
 		
 	}
 }
