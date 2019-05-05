@@ -45,7 +45,6 @@ public class JPanelMiddleTop extends JPanel {
 					e.consume();  
 				}
 			}
-
 			@Override
 			public void keyReleased(KeyEvent e) {
 			}

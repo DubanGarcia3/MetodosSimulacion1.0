@@ -12,6 +12,8 @@ public class ConstansUI {
 	
 	public static final String MESSAGE_TITTLE_FRAME = "Metodos de congruencias";
 	public static final String MESSAGE_TITTLE_DIALOG_MIDDLE = "Metodo Cuadrados Medios";
+	public static final String MESSAGE_TITTLE_DIALOG_CONGRUENCY = "Metodo congruencia lineal";
+	public static final String MESSAGE_TITTLE_DIALOG_CONGRUENCY_MULTI = "Metodo congruencia multiplicativa";
 	public static final String MESSAGE_TITTLE_DIALOG_INPUT_VALUES = "Ingresar valores";
 	public static final String MESSAGE_TITTLE_DIALOG_DISTRIBUTION = "Distribucion Uniforme + Prueba Chi2";
 	

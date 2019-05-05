@@ -2,17 +2,16 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import controller.Action;
 import controller.Controller;
@@ -29,6 +28,9 @@ public class JDialogLinealCongruency extends JDialog{
 
 	public JDialogLinealCongruency(Controller controller) {
 		this.controller = controller;
+		this.setIconImage(new ImageIcon(getClass().getResource(ConstansUI.PATH_IMAGE_PERFIL)).getImage());
+		this.setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_CONGRUENCY);
+		this.setModal(true);
 		this.setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/3,
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight()- 
 						Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4)));

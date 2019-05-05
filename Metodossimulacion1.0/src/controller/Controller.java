@@ -12,6 +12,7 @@ import proof.StockingTest;
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.Register;
 import views.JDialogDistributionUn;
+import views.JDialogInputDistribution;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JFramePrincipal;
@@ -22,6 +23,7 @@ public class Controller implements ActionListener {
 	private JDialogMiddle jDialogMiddle;
 	private JDialogLinealCongruency jDialogLinealCongruency;
 	private LinealCongruency linealCongruency;
+	private JDialogInputDistribution jDialogInputDistribution;
 	private JDialogDistributionUn jDialogDistributionUn;
 	private FileManager fileManager;
 	private StockingTest stockingTest;
@@ -34,6 +36,7 @@ public class Controller implements ActionListener {
 		this.jDialogMiddle = new JDialogMiddle(this);
 		this.jDialogLinealCongruency = new JDialogLinealCongruency(this);
 		this.jDialogDistributionUn = new JDialogDistributionUn(this);
+		this.jDialogInputDistribution = new JDialogInputDistribution(this);
 	}
 
 	public void run() {
@@ -65,11 +68,25 @@ public class Controller implements ActionListener {
 			manageStockingTest();
 			System.out.println("hola");
 			break;
+		case GENERATE_VALUES:
+			generateValuesForDistribution();
+			break;
 		default:
 			break;
 		}
 	}
 	
+	private void generateValuesForDistribution() {
+		if(jDialogInputDistribution.statusFields() == true) {
+			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
+			jDialogInputDistribution.setVisible(false);
+			jDialogInputDistribution.clearFields();
+			jDialogDistributionUn.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "Error!, campos invalidos","Error!", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 	private void manageStockingTest() {
 		System.out.println("entra");
 		ArrayList<String> list;
@@ -89,12 +106,7 @@ public class Controller implements ActionListener {
 	}
 
 	private void executeDistribution() {
-		String value = JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
-		if(!value.isEmpty()) {
-		jDialogDistributionUn.setVisible(true);
-		}else {
-			JOptionPane.showMessageDialog(null, "El campo es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-		}
+		jDialogInputDistribution.setVisible(true);
 	}
 
 	private void manageCongMulti() {
@@ -131,7 +143,7 @@ public class Controller implements ActionListener {
 					jDialogMiddle.clearTable();
 					calculate(jDialogMiddle.getSeed());
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Se totie");
+					JOptionPane.showMessageDialog(null, "Error");
 				}
 		}else {
 			jDialogMiddle.messagge(jDialogMiddle.statusSeed());

@@ -177,6 +177,26 @@ public class JDialogInputDistribution extends JDialog{
 		jTextFieldQuantity.setText("");
 	}
 	
+	public Boolean statusFields() {
+		if(!jTextFieldA.getText().isEmpty() && !jTextFieldB.getText().isEmpty() && !jTextFieldQuantity.getText().isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public String getTextA() {
+		return jTextFieldA.getText();
+	}
+	
+	public String getTextB() {
+		return jTextFieldB.getText();
+	}
+	
+	public String getTextQuantity() {
+		return jTextFieldQuantity.getText();
+	}
+	
 	public int getA() {
 		return Integer.parseInt(jTextFieldA.getText());
 	}

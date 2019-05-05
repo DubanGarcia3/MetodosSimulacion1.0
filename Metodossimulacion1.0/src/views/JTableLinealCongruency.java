@@ -102,14 +102,6 @@ public class JTableLinealCongruency extends JPanel{
 		this.dtm = dtm;
 	}
 
-//	public JScrollPane getJsp() {
-//		return jsp;
-//	}
-//
-//	public void setJsp(JScrollPane jsp) {
-//		this.jsp = jsp;
-//	}
-
 	public JTable getjTable() {
 		return jTable;
 	}
@@ -117,8 +109,6 @@ public class JTableLinealCongruency extends JPanel{
 	public void setjTable(JTable jTable) {
 		this.jTable = jTable;
 	}
-	
-	
 //
 //	public void refresh() {
 //		propertiesTitle = controllerGUI.getPropertiesTitle();
@@ -134,5 +124,4 @@ public class JTableLinealCongruency extends JPanel{
 //	
 //	public void refreshAll(){
 //	}
-
 }
