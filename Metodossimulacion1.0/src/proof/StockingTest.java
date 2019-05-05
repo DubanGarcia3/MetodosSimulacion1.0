@@ -8,10 +8,11 @@ public class StockingTest {
 	li, ls, min, max;
 	
 	private ArrayList<Double> listNi;
+	private ArrayList<Double> listNormalized;
 
 	public StockingTest(double media, double desvest, double acceptMargin, double z) {
-		
 		this.listNi = new ArrayList<Double>();
+		this.listNormalized = new ArrayList<Double>();
 		this.media = media;
 		this.desvest = desvest;
 		this.acceptMargin = acceptMargin;
@@ -26,8 +27,22 @@ public class StockingTest {
 		this.max = getMax();
 	}
 	
+	public void createTableNormalized() {
+		for (Double double1 : listNi) {
+			listNormalized.add((double1 - this.getMin())/(this.getMax()-this.getMin()));
+		}
+	}
+	
 	public boolean validateData() {
 		return this.getAverage() > this.getLi() && this.getAverage() < this.getLs();
+	}
+	
+	public ArrayList<Double> getListNormalized() {
+		return listNormalized;
+	}
+
+	public void setListNormalized(ArrayList<Double> listNormalized) {
+		this.listNormalized = listNormalized;
 	}
 
 	public double getMedia() {
