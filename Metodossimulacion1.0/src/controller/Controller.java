@@ -96,8 +96,6 @@ public class Controller implements ActionListener {
 		case APPLY_CHI:
 			applyChi();
 			break;
-		case BTN_VALID_DATA:
-			validStockingData();
 		default:
 			break;
 		}
@@ -174,6 +172,9 @@ public class Controller implements ActionListener {
 			}
 			stockingTest.createTableNormalized();
 			jDialogStockingTest.getjTableStocking().addListStocking(stockingTest.getListStocking());
+			jDialogStockingTest.updateData(""+stockingTest.getAcceptMargin(), ""+stockingTest.getAlpha(), ""+stockingTest.getN(),
+					""+stockingTest.getAverage(), ""+stockingTest.getHalfA(), ""+stockingTest.getZ(), ""+stockingTest.getLi(),
+					""+stockingTest.getLs(), ""+stockingTest.getMin(), ""+stockingTest.getMax());
 		} catch (IOException e) {
 			System.out.println(e);
 		}

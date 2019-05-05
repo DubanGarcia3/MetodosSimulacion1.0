@@ -79,13 +79,6 @@ public class JDialogStockingTest extends JDialog{
 		jButton.setActionCommand(Action.BTN_GENERATE_STACKING.name());
 		jPanelBtn.add(jButton);
 		
-		jButton2.setFocusable(false);
-		jButton2.setBackground(Color.WHITE);
-		jButton2.setFont(new Font("Arial", Font.PLAIN, 16));
-		jButton2.setVisible(false);
-		jButton2.addActionListener(controller);
-		jButton2.setActionCommand(Action.BTN_VALID_DATA.name());
-		jPanelBtn.add(jButton2);
 		
 		jPanel.add(jPanel1,BorderLayout.CENTER);
 		jPanel.add(jPanelBtn, BorderLayout.SOUTH);
@@ -153,16 +146,16 @@ public class JDialogStockingTest extends JDialog{
 	
 	public void updateData(String accept, String alpha, String n, String promedio, String alphaMedios, String Z,
 			String li, String ls, String min, String max) {
-		jLabelAccept.setText("Aceptación");
-		jLabel2Alpha.setText("α");
-		jLabelN.setText("n");
-		jLabelAverage.setText("promedio ");
-		jLabelHalfAlpha.setText("1-(α/2)");
-		jLabelz.setText("Z");
-		jLabelLi.setText("Li");
-		jLabelLs.setText("Ls");
-		jLabelMax.setText("Max");
-		jLabelMin.setText("Min");
+		jLabelAccept.setText("Aceptación: "+ accept);
+		jLabel2Alpha.setText("α: " + alpha);
+		jLabelN.setText("n: " + n);
+		jLabelAverage.setText("promedio: " + promedio);
+		jLabelHalfAlpha.setText("1-(α/2):  " + alphaMedios);
+		jLabelz.setText("Z: " + Z);
+		jLabelLi.setText("Li: "+li);
+		jLabelLs.setText("Ls: "+ls);
+		jLabelMax.setText("Max: "+min);
+		jLabelMin.setText("Min: "+max);
 	}
 
 	public JTableStocking getjTableStocking() {
