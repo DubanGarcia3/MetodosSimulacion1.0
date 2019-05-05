@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -30,12 +31,15 @@ public class JDialogMultiCongruency extends JDialog{
 
 	public JDialogMultiCongruency(Controller controller) {
 		this.controller = controller;
+		this.setIconImage(new ImageIcon(getClass().getResource(ConstansUI.PATH_IMAGE_PERFIL)).getImage());
 		this.setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/3,
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight()- 
 						Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4)));
 		this.setLocationRelativeTo(null);
+		this.setTitle(ConstansUI.MESSAGE_TITTLE_DIALOG_CONGRUENCY_MULTI);
 		this.setLayout(new FlowLayout());
-				this.setResizable(false);
+		this.setResizable(false);
+		this.setModal(true);
 		init();
 	}
 
