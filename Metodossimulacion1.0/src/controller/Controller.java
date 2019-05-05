@@ -39,6 +39,7 @@ public class Controller implements ActionListener {
 	private StockingTest stockingTest;
 	private ManagerDistribution managerDistribution;
 	private JDialogDistriChi jDialogDistriChi;
+	private double initial;
 
 	public Controller() {
 		this.fileManager = new FileManager();
@@ -54,6 +55,7 @@ public class Controller implements ActionListener {
 		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
 		this.jDialogDistriChi = new JDialogDistriChi(this);
 		this.managerDistribution = new ManagerDistribution();
+		this.initial = 0;
 	}
 
 	public void run() {
@@ -132,9 +134,9 @@ public class Controller implements ActionListener {
 	private void applyChi() {
 		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
 		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(23.6847913));
-		calculateFrequency(minAndmax[0], minAndmax[1], minAndmax[0], 14);
-		for (int i = 0; i < 13; i++) {
-			calculateFrequency(minAndmax[0], minAndmax[1], minAndmax[0], 14);
+		initial = minAndmax[0];
+		for (int i = 0; i < 14; i++) {
+			calculateFrequency(initial, minAndmax[1], minAndmax[0], 14);
 		}
 		jDialogDistriChi.setVisible(true);
 	}
@@ -142,7 +144,7 @@ public class Controller implements ActionListener {
 	private void calculateFrequency(double initial, double max, double min, double quanty) {
 		double theEnd = initial+(max-min)/quanty;
 		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(initial, theEnd), (managerDistribution.getNi().size()/14), 1.8));
-		initial = theEnd;
+		this.initial = theEnd;
 	}
 	
 	private int frequencyObtained(double initial, double theEnd) {
