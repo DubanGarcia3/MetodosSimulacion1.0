@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
@@ -84,8 +85,6 @@ public class Controller implements ActionListener {
 		}
 	}
 	
-	
-
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
@@ -98,21 +97,14 @@ public class Controller implements ActionListener {
 	}
 
 	private void manageStockingTest() {
-//		System.out.println("entra");
-//		ArrayList<String> list;
-//		try {
-//			list = (ArrayList<String>) fileManager.readFile();
-//			for (String string : list) {
-//				stockingTest.getListNi().add(Double.parseDouble(string.split(",").toString()));
-//			}
-//			for (int i = 0; i < stockingTest.getListNi().size(); i++) {
-//				if (stockingTest.getListNi().get(i) != null) {
-//					System.out.println(stockingTest.getListNi().get(i).doubleValue());
-//				}
-//			}
-//		} catch (IOException e) {
-//			System.out.println(e);
-//		}
+		try {
+			for (int i = 0; i < fileManager.readFile().size(); i++) {
+				stockingTest.getListNi().add(Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i), ","))));
+			}
+			
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 
 	private void executeDistribution() {
