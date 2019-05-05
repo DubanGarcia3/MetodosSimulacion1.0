@@ -41,4 +41,24 @@ public class ManagerDistribution {
 		double ni = min+((max-min)*random);
 		return ni;
 	}
+	
+	public Double[] getMinAndMax(ArrayList<Double> niList) {
+		Double[] list = new Double[2] ;
+		double min, max;
+		min = max = niList.get(0);
+		for(int i = 0; i < niList.size(); i++)
+		{
+			if(min>niList.get(i))
+			{
+				min=niList.get(i);
+			}
+			if(max<niList.get(i))
+			{
+				max=niList.get(i);
+			}
+		}
+		list[0] = min;
+		list[1] = max;
+		return list;
+	}
 }	

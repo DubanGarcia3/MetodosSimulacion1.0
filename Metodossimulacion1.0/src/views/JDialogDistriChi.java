@@ -65,4 +65,8 @@ public class JDialogDistriChi extends JDialog{
 		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(jsp, BorderLayout.CENTER);
 	}
+	
+	public void setText(String min, String max, String libertyGrade, String test){
+		jPanelTopDistriChi.setText(min, max, libertyGrade, test);
+	}
 }

@@ -107,6 +107,7 @@ public class Controller implements ActionListener {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
 			jDialogDistributionUn.clearTable();
 			loadDistributionData(Integer.parseInt(jDialogInputDistribution.getTextQuantity()), Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
+			checandomamadas();
 			jDialogInputDistribution.setVisible(false);
 			jDialogInputDistribution.clearFields();
 			jDialogDistributionUn.setVisible(true);
@@ -115,15 +116,22 @@ public class Controller implements ActionListener {
 		}
 	}
 	
+	private void checandomamadas() {
+		
+	}
+	
 	private void loadDistributionData(int quantity, double min, double max) {
 		for (int i = 0; i < quantity; i++) {
 			double ri = managerDistribution.createRi();
 			double ni = managerDistribution.calculateNi(ri, min, max);
+			managerDistribution.addNi(ni);
 			jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));			
 		}
 	}
 	
 	private void applyChi() {
+		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
+		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(1.92));
 		jDialogDistriChi.setVisible(true);
 	}
 	
