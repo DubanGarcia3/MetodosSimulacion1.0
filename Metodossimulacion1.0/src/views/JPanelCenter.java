@@ -65,6 +65,8 @@ public class JPanelCenter  extends JPanel{
 		jButtonDistribution.setFocusable(false);
 		jButtonDistribution.setBackground(Color.WHITE);
 		jButtonDistribution.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButtonDistribution.addActionListener(controller);
+		jButtonDistribution.setActionCommand(Action.DISTRIBUTION.toString());
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.weightx = 1;

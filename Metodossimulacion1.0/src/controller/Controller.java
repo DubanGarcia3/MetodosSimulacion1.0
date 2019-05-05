@@ -47,11 +47,18 @@ public class Controller implements ActionListener {
 		case CONG_MUL:
 			manageCongMulti();
 			break;
+		case DISTRIBUTION:
+			executeDistribution();
+			break;
 		default:
 			break;
 		}
 	}
 	
+	private void executeDistribution() {
+		JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
+	}
+
 	private void manageCongMulti() {
 	}
 
