@@ -16,6 +16,7 @@ public class JFramePrincipal  extends JFrame{
 	private JPanelCenter jPanelCenter;
 	private JPanelNorth jPanelNorth;
 	private JPanelLeft jPanelLeft;
+	private JPanelRight jPanelRight;
 	
 	public JFramePrincipal(Controller controller) {
 		getContentPane().setBackground(ConstansUI.COLOR_FRAME);
@@ -29,6 +30,9 @@ public class JFramePrincipal  extends JFrame{
 	}
 	
 	private void init(Controller controller) {
+		jPanelRight = new JPanelRight(controller);
+		add(jPanelRight, BorderLayout.EAST);
+		
 		jPanelLeft = new JPanelLeft();
 		add(jPanelLeft, BorderLayout.WEST);
 		
