@@ -94,6 +94,10 @@ public class Controller implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Error!, campos invalidos","Error!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	private void loadDistributionData() {
+		
+	}
 
 	@SuppressWarnings("unused")
 	private void manageStockingTest() {
