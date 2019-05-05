@@ -29,7 +29,7 @@ public class JDialogStockingTest extends JDialog{
 	private MyJTextField jTextFieldMedia, jTextFieldDesvest, jTextFieldAcceptmargin, jTextFieldZ;
 	private JButton jButton, jButton2;
 	private Controller controller;
-	private JLabel jLabelN, jLabelAverage, jLabelHalfAlpha, jLabelz, jLabelLi, jLabelLs, jLabel, jLabelMin;  
+	private JLabel jLabelAccept, jLabel2Alpha,jLabelN, jLabelAverage, jLabelHalfAlpha, jLabelz, jLabelLi, jLabelLs, jLabelMax, jLabelMin;  
 
 	public JDialogStockingTest(Controller controller) {
 		this.controller = controller;
@@ -49,10 +49,10 @@ public class JDialogStockingTest extends JDialog{
 		JPanel jPanel = new JPanel();
 		jPanel.setPreferredSize(new Dimension((int)this.getWidth()-40, this.getHeight()/5));
 		
-		Font font = new Font("Century Gothic", 1, 14);
+		Font font = new Font("Arial", 1, 14);
 		jTextFieldMedia = new MyJTextField("Media");
 		jTextFieldDesvest = new MyJTextField("Desviacion estandar");
-		jTextFieldAcceptmargin = new MyJTextField("Margen de aceptaci�n");
+		jTextFieldAcceptmargin = new MyJTextField("Margen de aceptación");
 		jTextFieldZ = new MyJTextField("Z");
 		
 		jTextFieldMedia.setFont(font);
@@ -74,7 +74,7 @@ public class JDialogStockingTest extends JDialog{
 		
 		jButton.setFocusable(false);
 		jButton.setBackground(Color.WHITE);
-		jButton.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		jButton.addActionListener(controller);
 		jButton.setActionCommand(Action.BTN_GENERATE_STACKING.name());
 		jPanelBtn.add(jButton);
@@ -93,25 +93,76 @@ public class JDialogStockingTest extends JDialog{
 		
 		jTableStocking = new JTableStocking();
 		
-		jTableStocking.setPreferredSize(new Dimension((int)this.getWidth()-40, (this.getHeight()- (this.getHeight()/4))));
+		jTableStocking.setPreferredSize(new Dimension((int)this.getWidth()-40, ( (this.getHeight()/2))));
 		this.add(jPanel);
 		this.add(jTableStocking);
 		
-		JPanel jPanel2 = new JPanel();
-		
+		JPanel jPanel2 = new JPanel(new GridLayout(5,2));
+		jPanel2.setPreferredSize(new Dimension((int)this.getWidth()-40, ( (this.getHeight()/4))-40));
+		jLabelAccept = new JLabel("Aceptación");
+		jLabel2Alpha = new JLabel("α");
+		jLabelN = new JLabel("n");
+		jLabelAverage  = new JLabel("promedio ");
+		jLabelHalfAlpha  = new JLabel("1-(α/2)");
+		jLabelz = new JLabel("Z");
+		jLabelLi = new JLabel("Li");
+		jLabelLs = new JLabel("Ls");
+		jLabelMax = new JLabel("Max");
+		jLabelMin = new JLabel("Min");
+		jLabelAccept.setFont(font);
+		jLabel2Alpha.setFont(font);
+		jLabelN.setFont(font);
+		jLabelAverage.setFont(font);
+		jLabelHalfAlpha.setFont(font);
+		jLabelz.setFont(font);
+		jLabelLi.setFont(font);
+		jLabelLs.setFont(font);
+		jLabelMax.setFont(font);
+		jLabelMin.setFont(font);
+		jPanel2.add(jLabelAccept);
+		jPanel2.add(jLabel2Alpha);
+		jPanel2.add(jLabelN);
+		jPanel2.add(jLabelAverage);
+		jPanel2.add(jLabelHalfAlpha);
+		jPanel2.add(jLabelz);
+		jPanel2.add(jLabelLi);
+		jPanel2.add(jLabelLs);
+		jPanel2.add(jLabelMax);
+		jPanel2.add(jLabelMin);
+		this.add(jPanel2);
 	}
 	
-	public LinealCongruency getCongruencyData() {
-		return new LinealCongruency(Double.parseDouble(jTextFieldMedia.getText()), 
-				Double.parseDouble(jTextFieldDesvest.getText()), Double.parseDouble(jTextFieldAcceptmargin.getText()), 
-				Double.parseDouble(jTextFieldZ.getText()));
-	}
 	
 	public void cleanAll() {
 		jTextFieldMedia.setText(""); 
 		jTextFieldDesvest.setText("");
 		jTextFieldAcceptmargin.setText(""); 
 		jTextFieldZ.setText("");
+		jLabelAccept.setText("Aceptación");
+		jLabel2Alpha.setText("α");
+		jLabelN.setText("n");
+		jLabelAverage.setText("promedio ");
+		jLabelHalfAlpha.setText("1-(α/2)");
+		jLabelz.setText("Z");
+		jLabelLi.setText("Li");
+		jLabelLs.setText("Ls");
+		jLabelMax.setText("Max");
+		jLabelMin.setText("Min");
+		
+	}
+	
+	public void updateData(String accept, String alpha, String n, String promedio, String alphaMedios, String Z,
+			String li, String ls, String min, String max) {
+		jLabelAccept.setText("Aceptación");
+		jLabel2Alpha.setText("α");
+		jLabelN.setText("n");
+		jLabelAverage.setText("promedio ");
+		jLabelHalfAlpha.setText("1-(α/2)");
+		jLabelz.setText("Z");
+		jLabelLi.setText("Li");
+		jLabelLs.setText("Ls");
+		jLabelMax.setText("Max");
+		jLabelMin.setText("Min");
 	}
 
 	public JTableStocking getjTableStocking() {
