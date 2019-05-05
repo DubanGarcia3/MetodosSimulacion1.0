@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import persistence.FileManager;
 import proof.StockingTest;
+import runner.Main;
+import uptc.com.sim.entities.ChiUni;
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
@@ -131,8 +133,24 @@ public class Controller implements ActionListener {
 	
 	private void applyChi() {
 		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
-		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(1.92));
+		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(23.6847913));
+		calculateFrequency(minAndmax[0], minAndmax[1], minAndmax[0], 14);
 		jDialogDistriChi.setVisible(true);
+	}
+	
+	private void calculateFrequency(double initial, double max, double min, double quanty) {
+		double theEnd = initial+(max-min)/quanty;
+		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, frequencyObtained(initial, theEnd), 8, 1.8));
+	}
+	
+	private int frequencyObtained(double initial, double theEnd) {
+		int count = 0;
+		for (int i = 0; i < managerDistribution.getNi().size(); i++) {
+			if(managerDistribution.getNi().get(i) > initial && managerDistribution.getNi().get(i) < theEnd ) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	private void validStockingData() {

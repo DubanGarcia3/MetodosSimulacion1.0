@@ -7,11 +7,14 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
+import uptc.com.sim.entities.ChiUni;
+import uptc.com.sim.entities.Distribution;
 
 public class JDialogDistriChi extends JDialog{
 
@@ -69,4 +72,20 @@ public class JDialogDistriChi extends JDialog{
 	public void setText(String min, String max, String libertyGrade, String test){
 		jPanelTopDistriChi.setText(min, max, libertyGrade, test);
 	}
+	
+	public void addRow(ChiUni chiUni){
+		model.addRow(chiUni.getData());
+	}
+	
+	public void clearTable(){
+        try {
+           model=(DefaultTableModel) table.getModel();
+            int filas=table.getRowCount();
+            for (int i = 0;filas>i; i++) {
+            	model.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
 }
