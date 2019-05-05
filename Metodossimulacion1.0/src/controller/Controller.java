@@ -132,10 +132,11 @@ public class Controller implements ActionListener {
 	}
 	
 	private void applyChi() {
+		int inverval = 8;
 		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
-		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(23.6847913));
+		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(7), String.valueOf(23.6847913));
 		initial = minAndmax[0];
-		for (int i = 0; i < 14; i++) {
+		for (int i = 0; i < inverval; i++) {
 			calculateFrequency(initial, minAndmax[1], minAndmax[0], 14);
 		}
 		jDialogDistriChi.setVisible(true);
