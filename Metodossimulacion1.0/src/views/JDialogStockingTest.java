@@ -158,8 +158,8 @@ public class JDialogStockingTest extends JDialog{
 		jLabelz.setText("Z: " + Z);
 		jLabelLi.setText("Li: "+li);
 		jLabelLs.setText("Ls: "+ls);
-		jLabelMax.setText("Max: "+min);
-		jLabelMin.setText("Min: "+max);
+		jLabelMax.setText("Max: "+max);
+		jLabelMin.setText("Min: "+min);
 	}
 
 	public JTableStocking getjTableStocking() {
