@@ -59,8 +59,12 @@ public class Controller implements ActionListener {
 	}
 	
 	private void executeDistribution() {
-		JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
+		String value = JOptionPane.showInputDialog(null, "Digite la cantidad de Ri a generar", "Dato de entrada", JOptionPane.INFORMATION_MESSAGE);
+		if(!value.isEmpty()) {
 		jDialogDistributionUn.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "El campo es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void manageCongMulti() {
