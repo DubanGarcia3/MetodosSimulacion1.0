@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import uptc.com.sim.entities.RegisterNormalizedPoker;
+
 public class JDialogPoker extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -60,5 +62,10 @@ public class JDialogPoker extends JDialog {
 		jsp.setBorder(null);
 		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(jsp, BorderLayout.CENTER);
+	}
+	
+	public void addRow(RegisterNormalizedPoker register){
+		model.addRow(register.getData());
+		jsp.updateUI();
 	}
 }

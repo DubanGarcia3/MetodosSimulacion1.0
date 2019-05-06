@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import persistence.FileManager;
@@ -18,6 +19,8 @@ import uptc.com.sim.entities.ManagerChiUni;
 import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
+import uptc.com.sim.entities.RegisterNormalizedPoker;
+import uptc.com.sim.entities.Type;
 import views.JDialogDistriChi;
 import views.JDialogDistributionUn;
 import views.JDialogInputDistribution;
@@ -118,14 +121,12 @@ public class Controller implements ActionListener {
 		ArrayList<String> a = new ArrayList<String>();
 		try {
 			for (int i = 0; i < FileManager.readPoker().length; i++) {
-				a.add(FileManager.readPoker()[i].toString());
+				
+				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), Type.P));
 			}	
-			 
+			jDialogPoker.setVisible(true);
 		} catch (IOException e) {
-			System.out.println(e);
-		}
-		for (int i = 0; i < a.size(); i++) {
-			System.out.println(a.get(i));
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 
