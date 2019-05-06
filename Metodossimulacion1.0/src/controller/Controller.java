@@ -13,6 +13,7 @@ import proof.StockingTest;
 import runner.Main;
 import uptc.com.sim.entities.ChiUni;
 import uptc.com.sim.entities.LinealCongruency;
+import uptc.com.sim.entities.ManagerChiUni;
 import uptc.com.sim.entities.ManagerDistribution;
 import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
@@ -40,6 +41,7 @@ public class Controller implements ActionListener {
 	private StockingTest stockingTest;
 	private ManagerDistribution managerDistribution;
 	private JDialogDistriChi jDialogDistriChi;
+	private ManagerChiUni managerChiUni;
 	private double initial;
 
 	public Controller() {
@@ -56,6 +58,7 @@ public class Controller implements ActionListener {
 		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
 		this.jDialogDistriChi = new JDialogDistriChi(this);
 		this.managerDistribution = new ManagerDistribution();
+		this.managerChiUni = new ManagerChiUni();
 		this.initial = 0;
 	}
 
@@ -139,7 +142,7 @@ public class Controller implements ActionListener {
 		for (int i = 0; i < 15; i++) {
 			calculateFrequency(initial, minAndmax[1], minAndmax[0], 15);
 		}
-//		jDialogDistriChi.setTextPanelBot("Total:   ", oF, eF, totalChi);
+		jDialogDistriChi.setTextPanelBot("Total:   ", String.valueOf(managerChiUni.oF()), String.valueOf(managerChiUni.eF()), String.valueOf(managerChiUni.chi()));
 		jDialogDistriChi.setVisible(true);
 	}
 	
@@ -148,7 +151,14 @@ public class Controller implements ActionListener {
 		double freObtained = frequencyObtained(initial, theEnd);
 		double expectedFrec = (double)managerDistribution.getNi().size()/15;
 		jDialogDistriChi.addRow(new ChiUni(initial, theEnd, freObtained, expectedFrec, Math.pow((expectedFrec-freObtained), 2)));
+		addElementsToList(freObtained, freObtained, Math.pow((expectedFrec-freObtained), 2));
 		this.initial = theEnd;
+	}
+	
+	private void addElementsToList(double oF, double eF, double chi) {
+		managerChiUni.addOF(oF);
+		managerChiUni.addEF(eF);
+		managerChiUni.addChi(chi);
 	}
 	
 	private int frequencyObtained(double initial, double theEnd) {

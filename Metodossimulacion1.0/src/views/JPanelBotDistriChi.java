@@ -40,8 +40,8 @@ public class JPanelBotDistriChi extends JPanel {
 	
 	public void setText(String total, String oF, String eF, String totalChi) {
 		jLabelTotal.setText(total);
-		jLabelObtainedFrequency.setText(oF);
-		jLabelExpectedFrequency.setText(eF);
-		jLabelTotalChi.setText(totalChi);
+		jLabelObtainedFrequency.setText("Frecuencia obtenida: "+oF);
+		jLabelExpectedFrequency.setText("Frecuencia esperada: "+eF);
+		jLabelTotalChi.setText("Sumatoria Chi2: "+totalChi);
 	}
 }
