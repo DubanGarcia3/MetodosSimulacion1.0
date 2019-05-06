@@ -142,7 +142,7 @@ public class Controller implements ActionListener {
 		for (int i = 0; i < 15; i++) {
 			calculateFrequency(initial, minAndmax[1], minAndmax[0], 15);
 		}
-		jDialogDistriChi.setTextPanelBot("Total:   ", String.valueOf(managerChiUni.oF()), String.valueOf(managerChiUni.eF()), String.valueOf(managerChiUni.chi()));
+		jDialogDistriChi.setTextPanelBot(String.valueOf(managerChiUni.oF()), String.valueOf(managerChiUni.eF()), String.valueOf(managerChiUni.chi()));
 		jDialogDistriChi.setVisible(true);
 	}
 	

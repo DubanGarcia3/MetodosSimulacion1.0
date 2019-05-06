@@ -25,7 +25,7 @@ public class JPanelBotDistriChi extends JPanel {
 	}
 
 	private void init() {
-		jLabelTotal = new JLabel();
+		jLabelTotal = new JLabel("Totales: ");
 		add(jLabelTotal);
 		
 		jLabelObtainedFrequency = new JLabel();
@@ -38,10 +38,9 @@ public class JPanelBotDistriChi extends JPanel {
 		add(jLabelTotalChi);
 	}
 	
-	public void setText(String total, String oF, String eF, String totalChi) {
-		jLabelTotal.setText(total);
-		jLabelObtainedFrequency.setText("Frecuencia obtenida: "+oF);
-		jLabelExpectedFrequency.setText("Frecuencia esperada: "+eF);
+	public void setText(String oF, String eF, String totalChi) {
+		jLabelObtainedFrequency.setText("Fre Ob.: "+oF);
+		jLabelExpectedFrequency.setText("Fre Es.: "+eF);
 		jLabelTotalChi.setText("Sumatoria Chi2: "+totalChi);
 	}
 }
