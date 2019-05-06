@@ -124,7 +124,9 @@ public class Controller implements ActionListener {
 		ArrayList<String> a = new ArrayList<String>();
 		try {
 			for (int i = 0; i < FileManager.readPoker().length; i++) {
+				managerRegisterPoker.addRegister(FileManager.readPoker()[i].toString());
 				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), Type.P));
+				managerRegisterPoker.valueType();
 			}	
 			jDialogPoker.setVisible(true);
 		} catch (IOException e) {

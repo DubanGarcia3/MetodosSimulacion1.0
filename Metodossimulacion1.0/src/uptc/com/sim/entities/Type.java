@@ -1,5 +1,5 @@
 package uptc.com.sim.entities;
 
 public enum Type {
-	P
+	D, P, O, T, S, F, Q
 }
