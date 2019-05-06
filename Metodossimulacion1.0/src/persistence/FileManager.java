@@ -13,6 +13,13 @@ public class FileManager {
 		return listLines;		
 	}
 	
+	public List<String> readFilePoker() throws IOException{
+		List<String> listLines;
+		listLines = Files.readAllLines(Paths.get("src/data/datos3.csv"));
+		return listLines;		
+	}
+	
+	
 	public static String[] splitLine(String line, String separator){
 		return line.split(separator);
 	}

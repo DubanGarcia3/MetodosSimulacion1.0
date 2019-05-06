@@ -21,6 +21,7 @@ public class JPanelRight extends JPanel{
 	
 	private JButton jButtonStokingTest;
 	private JButton jButtonVariance;
+	private JButton jButtonPoker;
 	private GridBagConstraints gbc;
 	
 	public JPanelRight(Controller controller) {
@@ -51,6 +52,18 @@ public class JPanelRight extends JPanel{
 		gbc.weightx = 1;
 		gbc.weighty = 1;
 		add(jButtonVariance,gbc);
+		
+		jButtonPoker = new JButton("Prueba de Poker");
+		jButtonPoker.setFocusable(false);
+		jButtonPoker.setBackground(Color.WHITE);
+		jButtonPoker.setFont(new Font("Arial", Font.PLAIN, 16));
+		jButtonPoker.addActionListener(controller);
+		jButtonPoker.setActionCommand(Action.POKER.name());
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		add(jButtonPoker,gbc);
 		
 	}
 	

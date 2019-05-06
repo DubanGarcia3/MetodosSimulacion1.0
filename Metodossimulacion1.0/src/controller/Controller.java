@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
@@ -101,12 +102,28 @@ public class Controller implements ActionListener {
 			break;
 		case APPLY_CHI:
 			applyChi();
+		case POKER:
+			executePoker();
 			break;
 		default:
 			break;
 		}
 	}
-	
+
+	private void executePoker() {
+		ArrayList<Double> a = new ArrayList<Double>();
+		try {
+			for (int i = 0; i < fileManager.readFilePoker().size(); i++) {
+				a.add(((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFilePoker().get(i),",")).
+						substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFilePoker().get(i),",")).length()-1)))));
+			}	
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		for (int i = 0; i < a.size(); i++) {
+			System.out.println(a.get(i));
+		}
+	}
 
 	private void generateValuesForDistribution() {
 		if(jDialogInputDistribution.statusFields() == true) {
@@ -121,11 +138,11 @@ public class Controller implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Error!, campos invalidos","Error!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	private void checandomamadas() {
-		
+
 	}
-	
+
 	private void loadDistributionData(int quantity, double min, double max) {
 		for (int i = 0; i < quantity; i++) {
 			double ri = managerDistribution.createRi();
@@ -134,7 +151,7 @@ public class Controller implements ActionListener {
 			jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));			
 		}
 	}
-	
+
 	private void applyChi() {
 		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
 		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(23.6847913));
@@ -145,7 +162,7 @@ public class Controller implements ActionListener {
 		jDialogDistriChi.setTextPanelBot(String.valueOf(managerChiUni.oF()), String.valueOf(managerChiUni.eF()), String.valueOf(managerChiUni.chi()));
 		jDialogDistriChi.setVisible(true);
 	}
-	
+
 	private void calculateFrequency(double initial, double max, double min, double quanty) {
 		double theEnd = initial+(max-min)/quanty;
 		double freObtained = frequencyObtained(initial, theEnd);
@@ -154,13 +171,13 @@ public class Controller implements ActionListener {
 		addElementsToList(freObtained, freObtained, Math.pow((expectedFrec-freObtained), 2));
 		this.initial = theEnd;
 	}
-	
+
 	private void addElementsToList(double oF, double eF, double chi) {
 		managerChiUni.addOF(oF);
 		managerChiUni.addEF(eF);
 		managerChiUni.addChi(chi);
 	}
-	
+
 	private int frequencyObtained(double initial, double theEnd) {
 		int count = 0;
 		for (int i = 0; i < managerDistribution.getNi().size(); i++) {
@@ -170,7 +187,7 @@ public class Controller implements ActionListener {
 		}
 		return count;
 	}
-	
+
 	private void validStockingData() {
 	}
 
@@ -188,14 +205,14 @@ public class Controller implements ActionListener {
 		try {
 			for (int i = 0; i < fileManager.readFile().size(); i++) {
 				stockingTest.add(((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).
-				substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1)))));
+						substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFile().get(i),",")).length()-1)))));
 			}
 			stockingTest.createTableNormalized();
 			jDialogStockingTest.getjTableStocking().addListStocking(stockingTest.getListStocking());
 			jDialogStockingTest.updateData(""+stockingTest.getAcceptMargin(), ""+stockingTest.getAlpha(), ""+stockingTest.getN(),
 					""+stockingTest.getAverage(), ""+stockingTest.getHalfA(), ""+stockingTest.getZ(), ""+stockingTest.getLi(),
 					""+stockingTest.getLs(), ""+stockingTest.getMin(), ""+stockingTest.getMax());
-			
+
 			if (stockingTest.getAverage() >= stockingTest.getLi() && stockingTest.getAverage() <= stockingTest.getLs()) {
 				jDialogStockingTest.getjLabelPass().setForeground(Color.GREEN);
 				jDialogStockingTest.getjLabelPass().setText("LOS DATOS PASAN LA PRUEBA ");
@@ -204,7 +221,6 @@ public class Controller implements ActionListener {
 				jDialogStockingTest.getjLabelPass().setText("LOS DATOS NO PASAN LA PRUEBA");
 			}
 		} catch (IOException e) {
-			//dddsjshsjhshjsj
 			System.out.println(e);
 		}
 	}
@@ -218,7 +234,7 @@ public class Controller implements ActionListener {
 		jDialogMultiCongruency.cleanAll();
 		jDialogMultiCongruency.getjTableLinealCongruency().clearTable();
 	}
-	
+
 	private void generateListCongMulti() {
 		jDialogMultiCongruency.getjTableLinealCongruency().clearTable();
 		if (jDialogMultiCongruency.getjTextFieldX0().getText().isEmpty() ||  
@@ -238,9 +254,9 @@ public class Controller implements ActionListener {
 	private void generateListCongLin() {
 		jDialogLinealCongruency.getjTableLinealCongruency().clearTable();
 		if (jDialogLinealCongruency.getjTextFieldX0().getText().isEmpty() ||  
-			jDialogLinealCongruency.getjTextFieldK().getText().isEmpty() ||
-			jDialogLinealCongruency.getjTextFieldC().getText().isEmpty() ||
-			jDialogLinealCongruency.getjTextFieldG().getText().isEmpty() ) {
+				jDialogLinealCongruency.getjTextFieldK().getText().isEmpty() ||
+				jDialogLinealCongruency.getjTextFieldC().getText().isEmpty() ||
+				jDialogLinealCongruency.getjTextFieldG().getText().isEmpty() ) {
 			JOptionPane.showMessageDialog(null, "por favor ingresar todos los datos numericos  ;)");
 		}else {
 			jDialogLinealCongruency.setVisible(true);
@@ -261,17 +277,17 @@ public class Controller implements ActionListener {
 
 	private void loadSeed() {
 		if(jDialogMiddle.statusSeed() == true) {
-				try {
-					jDialogMiddle.clearTable();
-					calculate(jDialogMiddle.getSeed());
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Error");
-				}
+			try {
+				jDialogMiddle.clearTable();
+				calculate(jDialogMiddle.getSeed());
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Error");
+			}
 		}else {
 			jDialogMiddle.messagge(jDialogMiddle.statusSeed());
 		}
 	}
-	
+
 	private void calculate(int initial) throws Exception{
 		try {
 			int seed = initial;
@@ -286,22 +302,22 @@ public class Controller implements ActionListener {
 			JOptionPane.showMessageDialog(null, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	private String addZero(int length, String extent) {
 		int value = (8-length);
 		String completeChain =extent;
 		for (int i = 0; i < value; i++) {
-			 completeChain= "0" + completeChain;
+			completeChain= "0" + completeChain;
 		}
 		return  completeChain;
 	}
-	
+
 	private int getChain(String chain) {
 		String value = chain.substring(2, 6);
 		int extract = Integer.parseInt(value);
 		return extract;
 	}
-	
+
 	private double calculateRi(String chain) {
 		return (double)getChain(chain)/10000;
 	}
