@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import uptc.com.sim.entities.ChiUni;
-import uptc.com.sim.entities.Distribution;
 
 public class JDialogDistriChi extends JDialog{
 

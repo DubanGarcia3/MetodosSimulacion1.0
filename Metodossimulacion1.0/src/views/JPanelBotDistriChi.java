@@ -2,7 +2,6 @@ package views;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,11 +14,9 @@ public class JPanelBotDistriChi extends JPanel {
 	private JLabel jLabelObtainedFrequency;
 	private JLabel jLabelExpectedFrequency;
 	private JLabel jLabelTotalChi;
-	private GridBagConstraints gbc;
 	
 	public JPanelBotDistriChi() {
 		setLayout(new FlowLayout());
-		gbc = new GridBagConstraints();
 		this.setBackground(Color.decode("#A2DD2E"));
 		init();
 	}

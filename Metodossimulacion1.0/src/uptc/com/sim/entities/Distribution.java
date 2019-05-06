@@ -3,8 +3,6 @@ package uptc.com.sim.entities;
 public class Distribution {
 	
 	private static int no = 0;
-	private double min;
-	private double max;
 	private double xi;
 	private double ni; 
 	

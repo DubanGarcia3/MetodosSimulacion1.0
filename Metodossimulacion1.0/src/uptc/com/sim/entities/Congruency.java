@@ -1,6 +1,5 @@
 package uptc.com.sim.entities;
 
-import java.util.ArrayList;
 
 public class Congruency {
 	

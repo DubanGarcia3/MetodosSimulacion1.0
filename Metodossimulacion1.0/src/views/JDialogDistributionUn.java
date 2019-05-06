@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import uptc.com.sim.entities.Distribution;
-import uptc.com.sim.entities.Register;
 
 public class JDialogDistributionUn extends JDialog{
 
