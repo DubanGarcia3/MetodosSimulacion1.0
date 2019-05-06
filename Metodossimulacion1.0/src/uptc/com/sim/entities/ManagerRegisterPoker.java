@@ -7,9 +7,67 @@ import java.util.Scanner;
 public class ManagerRegisterPoker {
 
 	private ArrayList<String> registerPokerList;
+	private int input0, input1, input2, input3, input4, input5, input6, input7, input8, input9;
+	private ArrayList<Integer> a;
 
 	public ManagerRegisterPoker() {
 		registerPokerList = new ArrayList<String>();
+		a = new ArrayList<Integer>();
+		
+		input0 = 0;
+		input1 = 0;
+		input2 = 0;
+		input3 = 0;
+		input4 = 0;
+		input5 = 0;
+		input6 = 0;
+		input7 = 0;
+		input8 = 0;
+		input9 = 0;
+	}
+	
+	public ArrayList<String> getRegisterPokerList() {
+		return registerPokerList;
+	}
+
+	public int getInput0() {
+		return input0;
+	}
+
+	public int getInput1() {
+		return input1;
+	}
+
+	public int getInput2() {
+		return input2;
+	}
+
+	public int getInput3() {
+		return input3;
+	}
+
+	public int getInput4() {
+		return input4;
+	}
+
+	public int getInput5() {
+		return input5;
+	}
+
+	public int getInput6() {
+		return input6;
+	}
+
+	public int getInput7() {
+		return input7;
+	}
+
+	public int getInput8() {
+		return input8;
+	}
+
+	public int getInput9() {
+		return input9;
 	}
 
 	public void addRegister(String register) {
@@ -17,35 +75,62 @@ public class ManagerRegisterPoker {
 	}
 
 	public Type valueType() {
-			 String cadena="";
-		        char [] Arraycadena ;
-		        char caracter;
-		        int contador =0;
-		        cadena = registerPokerList.get(0);
-		        Arraycadena=cadena.toCharArray();
-		        for(int j =2;j<Arraycadena.length;j++){
-		            caracter = Arraycadena[j];
-		            for(int k=2;k<Arraycadena.length;k++){
-		                if(Arraycadena[k]==caracter){
-		                    contador++;
-		                }//Fin
-		            }//Fin 
-		            System.out.println(Arraycadena[j]+" "+contador+" veces.");
-		            contador= 0;
-		        }//Fin 
+		for (int i = 0; i < a.size(); i++) {
+		}
 		return Type.P;
 	}
 	
-	public void value() throws IOException {
+	public void value(String value) throws IOException {
 	        String texto;
 	        char caracter = 0;
 	        int numeroDeVeces = 0;
 	        do {
-	            texto = registerPokerList.get(0);
+	            texto = value.substring(2, registerPokerList.get(0).length());
 	        } while (texto.isEmpty());
-	        caracter = (char) '0';
-	        numeroDeVeces = contarCaracteres(texto, caracter);
-	        System.out.println("El caracter " + caracter + " aparece " + numeroDeVeces + " veces");
+	        
+	        for (int i = 0; i < 9; i++) {
+	        	caracter = Character.forDigit(i, 10);
+		        numeroDeVeces = contarCaracteres(texto, caracter);
+		        if(caracter == '0') {
+		        	input0 = numeroDeVeces ;
+		        } 
+		        
+		        if(caracter == '1') {
+		        	input1 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '2') {
+		        	input2 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '3') {
+		        	input3 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '4') {
+		        	input4 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '5') {
+		        	input5 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '6') {
+		        	input6 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '7') {
+		        	input7 = numeroDeVeces;
+		        }
+		        
+		        if(caracter == '8') {
+		        	input8 = numeroDeVeces;
+		        } 
+		        
+		        if(caracter == '9') {
+		        	input9 = numeroDeVeces;
+		        } 
+			}
 	    }
 
 	    public static int contarCaracteres(String cadena, char caracter) {
