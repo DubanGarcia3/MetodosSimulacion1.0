@@ -17,6 +17,7 @@ import uptc.com.sim.entities.ChiUni;
 import uptc.com.sim.entities.LinealCongruency;
 import uptc.com.sim.entities.ManagerChiUni;
 import uptc.com.sim.entities.ManagerDistribution;
+import uptc.com.sim.entities.ManagerRegisterPoker;
 import uptc.com.sim.entities.MultiCongruency;
 import uptc.com.sim.entities.Register;
 import uptc.com.sim.entities.RegisterNormalizedPoker;
@@ -47,6 +48,7 @@ public class Controller implements ActionListener {
 	private ManagerDistribution managerDistribution;
 	private JDialogDistriChi jDialogDistriChi;
 	private ManagerChiUni managerChiUni;
+	private ManagerRegisterPoker managerRegisterPoker;
 	private JDialogPoker jDialogPoker;
 	private double initial;
 
@@ -66,6 +68,7 @@ public class Controller implements ActionListener {
 		this.jDialogPoker = new JDialogPoker();
 		this.managerDistribution = new ManagerDistribution();
 		this.managerChiUni = new ManagerChiUni();
+		this.managerRegisterPoker = new ManagerRegisterPoker();
 		this.initial = 0;
 	}
 
@@ -121,7 +124,6 @@ public class Controller implements ActionListener {
 		ArrayList<String> a = new ArrayList<String>();
 		try {
 			for (int i = 0; i < FileManager.readPoker().length; i++) {
-				
 				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), Type.P));
 			}	
 			jDialogPoker.setVisible(true);
@@ -156,7 +158,7 @@ public class Controller implements ActionListener {
 			jDialogDistributionUn.addRow(managerDistribution.create(ri, ni));			
 		}
 	}
-
+	
 	private void applyChi() {
 		Double minAndmax[] = managerDistribution.getMinAndMax(managerDistribution.getNi());
 		jDialogDistriChi.setText(String.valueOf(minAndmax[0]), String.valueOf(minAndmax[1]), String.valueOf(14.0), String.valueOf(23.6847913));
@@ -191,9 +193,6 @@ public class Controller implements ActionListener {
 			}
 		}
 		return count;
-	}
-
-	private void validStockingData() {
 	}
 
 	private void generateStockingTest() {
