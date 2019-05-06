@@ -9,7 +9,7 @@ public class FileManager {
 	
 	public List<String> readFile() throws IOException{
 		List<String> listLines;
-		listLines = Files.readAllLines(Paths.get("src/data/datos2.csv"));
+		listLines = Files.readAllLines(Paths.get("src/data/data.csv"));
 		return listLines;		
 	}
 	

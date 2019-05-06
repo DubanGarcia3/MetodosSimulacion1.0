@@ -111,7 +111,7 @@ public class StockingTest {
 	}
 
 	public double getLi() {
-		return ((1/2)-getHalfA())*(1/(Math.sqrt(12)*getN()));
+		return (1/2)-getZ()*(1/(Math.sqrt(12*getN())));
 	}
 
 	public void setLi(double li) {
@@ -119,7 +119,7 @@ public class StockingTest {
 	}
 
 	public double getLs() {
-		return ((1/2)+getHalfA())*(1/(Math.sqrt(12)*getN()));
+		return (1/2)+getZ()*(1/(Math.sqrt(12*getN())));
 	}
 
 	public void setLs(double ls) {

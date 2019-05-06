@@ -204,7 +204,6 @@ public class Controller implements ActionListener {
 				jDialogStockingTest.getjLabelPass().setText("LOS DATOS NO PASAN LA PRUEBA");
 			}
 		} catch (IOException e) {
-			//dddsjshsjhshjsj
 			System.out.println(e);
 		}
 	}
