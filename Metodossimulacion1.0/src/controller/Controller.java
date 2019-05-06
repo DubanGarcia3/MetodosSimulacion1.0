@@ -110,6 +110,7 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	
 	private void executePoker() {
 		ArrayList<Double> a = new ArrayList<Double>();
 		try {
