@@ -21,6 +21,7 @@ public class JDialogDistriChi extends JDialog{
 	private static final long serialVersionUID = 1L;
 	
 	private JPanelTopDistriChi jPanelTopDistriChi;
+	private JPanelBotDistriChi jPanelBotDistriChi;
 	private DefaultTableModel model;
 	private static final String[] COLUMS = {"No","Inicial","Final","Frec. Obtenida", "Frec. Esperada","Chi2"}; 
 	private JTable table;
@@ -67,6 +68,9 @@ public class JDialogDistriChi extends JDialog{
 		jsp.setBorder(null);
 		jsp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(jsp, BorderLayout.CENTER);
+		
+		jPanelBotDistriChi = new JPanelBotDistriChi();
+		add(jPanelBotDistriChi, BorderLayout.SOUTH);
 	}
 	
 	public void setText(String min, String max, String libertyGrade, String test){
