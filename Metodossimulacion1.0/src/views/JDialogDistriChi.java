@@ -77,6 +77,10 @@ public class JDialogDistriChi extends JDialog{
 		jPanelTopDistriChi.setText(min, max, libertyGrade, test);
 	}
 	
+	public void setTextPanelBot(String total, String oF, String eF, String totalChi){
+		jPanelBotDistriChi.setText(total, oF, eF, totalChi);
+	}
+	
 	public void addRow(ChiUni chiUni){
 		model.addRow(chiUni.getData());
 	}
