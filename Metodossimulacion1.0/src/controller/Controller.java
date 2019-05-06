@@ -24,6 +24,7 @@ import views.JDialogInputDistribution;
 import views.JDialogLinealCongruency;
 import views.JDialogMiddle;
 import views.JDialogMultiCongruency;
+import views.JDialogPoker;
 import views.JDialogStockingTest;
 import views.JFramePrincipal;
 
@@ -43,6 +44,7 @@ public class Controller implements ActionListener {
 	private ManagerDistribution managerDistribution;
 	private JDialogDistriChi jDialogDistriChi;
 	private ManagerChiUni managerChiUni;
+	private JDialogPoker jDialogPoker;
 	private double initial;
 
 	public Controller() {
@@ -58,6 +60,7 @@ public class Controller implements ActionListener {
 		this.jDialogInputDistribution = new JDialogInputDistribution(this);
 		this.jDialogMultiCongruency = new JDialogMultiCongruency(this);
 		this.jDialogDistriChi = new JDialogDistriChi(this);
+		this.jDialogPoker = new JDialogPoker();
 		this.managerDistribution = new ManagerDistribution();
 		this.managerChiUni = new ManagerChiUni();
 		this.initial = 0;
@@ -112,12 +115,12 @@ public class Controller implements ActionListener {
 
 	
 	private void executePoker() {
-		ArrayList<Double> a = new ArrayList<Double>();
+		ArrayList<String> a = new ArrayList<String>();
 		try {
-			for (int i = 0; i < fileManager.readFilePoker().size(); i++) {
-				a.add(((Double.parseDouble(Arrays.toString(FileManager.splitLine(fileManager.readFilePoker().get(i),",")).
-						substring(1, Arrays.toString(FileManager.splitLine(fileManager.readFilePoker().get(i),",")).length()-1)))));
+			for (int i = 0; i < FileManager.readPoker().length; i++) {
+				a.add(FileManager.readPoker()[i].toString());
 			}	
+			 
 		} catch (IOException e) {
 			System.out.println(e);
 		}

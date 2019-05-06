@@ -66,7 +66,4 @@ public class JPanelRight extends JPanel{
 		add(jButtonPoker,gbc);
 		
 	}
-	
-	
-
 }
