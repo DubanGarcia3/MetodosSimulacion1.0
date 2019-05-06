@@ -6,6 +6,7 @@ import uptc.com.sim.entities.Stocking;
 
 public class StockingTest {
 	
+	@SuppressWarnings("unused")
 	private double media, desvest, acceptMargin, alpha, n, average, halfA, z,
 	li, ls, min, max;
 	

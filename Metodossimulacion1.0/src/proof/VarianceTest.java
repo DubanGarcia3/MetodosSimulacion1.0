@@ -8,11 +8,17 @@ public class VarianceTest {
 	
 	private double accept; 
 	private double alpha;
+	@SuppressWarnings("unused")
 	private double n;
+	@SuppressWarnings("unused")
 	private double promedio;
+	@SuppressWarnings("unused")
 	private double aHalf;
+	@SuppressWarnings("unused")
 	private double oneAHalf;
+	@SuppressWarnings("unused")
 	private double halfVariance;
+	@SuppressWarnings("unused")
 	private double variance;
 	private double chiAHalf;
 	private double chiOneAHalf;
@@ -27,12 +33,12 @@ public class VarianceTest {
 		this.promedio = this.getPromedio();
 		this.aHalf = this.getaHalf();
 		this.oneAHalf = this.getOneAHalf();
-		this.halfVariance = halfVariance;
-		this.variance = variance;
-		this.chiAHalf = chiAHalf;
-		this.chiOneAHalf = chiOneAHalf;
-		this.linf = linf;
-		this.lsup = lsup;
+		this.halfVariance = this.getHalfVariance();
+		this.variance = this.getVariance();
+		this.chiAHalf = 70.22241357;
+		this.chiOneAHalf = 31.55491646;
+		this.linf = this.getLinf();
+		this.lsup = this.getLsup();
 		this.listVariance = new ArrayList<Variance>();
 	}
 
@@ -97,7 +103,13 @@ public class VarianceTest {
 	}
 
 	public double getVariance() {
-		return variance;
+		double sup = 0;
+		for (int i = 0; i < listVariance.size(); i++) {
+			sup += Math.pow(listVariance.get(i).getNormalized(), 2) -
+				Math.pow((this.getN()- this.getPromedio()),2)/this.getN();
+					
+		}
+		return sup/(this.getN()-1);
 	}
 
 	public void setVariance(double variance) {
@@ -121,7 +133,7 @@ public class VarianceTest {
 	}
 
 	public double getLinf() {
-		return linf;
+		return this.getChiAHalf()/(12*(this.getN()-1));
 	}
 
 	public void setLinf(double linf) {
@@ -129,7 +141,7 @@ public class VarianceTest {
 	}
 
 	public double getLsup() {
-		return lsup;
+		return this.getOneAHalf()/(12*(this.getN()-1));
 	}
 
 	public void setLsup(double lsup) {
