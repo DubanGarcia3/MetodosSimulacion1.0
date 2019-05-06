@@ -126,7 +126,7 @@ public class Controller implements ActionListener {
 			for (int i = 0; i < FileManager.readPoker().length; i++) {
 				managerRegisterPoker.addRegister(FileManager.readPoker()[i].toString());
 				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), Type.P));
-				managerRegisterPoker.valueType();
+				managerRegisterPoker.value();
 			}	
 			jDialogPoker.setVisible(true);
 		} catch (IOException e) {
