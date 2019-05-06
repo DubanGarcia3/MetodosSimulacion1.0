@@ -121,14 +121,14 @@ public class Controller implements ActionListener {
 
 	
 	private void executePoker() {
-		ArrayList<String> a = new ArrayList<String>();
 		try {
 			for (int i = 0; i < FileManager.readPoker().length; i++) {
 				managerRegisterPoker.addRegister(FileManager.readPoker()[i].toString());
-				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), Type.P));
+				managerRegisterPoker.value(managerRegisterPoker.getRegisterPokerList().get(i));
+				managerRegisterPoker.getCant();
+				Type p = (managerRegisterPoker.type(managerRegisterPoker.getMinAndMax()[1], managerRegisterPoker.getMinAndMax()[0]));
+				jDialogPoker.addRow(new RegisterNormalizedPoker(FileManager.readPoker()[i].toString(), p));
 			}	
-			managerRegisterPoker.value(managerRegisterPoker.getRegisterPokerList().get(0));
-			System.out.println(managerRegisterPoker.getInput0()+""+managerRegisterPoker.getInput3());
 			jDialogPoker.setVisible(true);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -140,17 +140,12 @@ public class Controller implements ActionListener {
 			jDialogDistributionUn.setText(jDialogInputDistribution.getTextQuantity(), jDialogInputDistribution.getTextA(), jDialogInputDistribution.getTextB());
 			jDialogDistributionUn.clearTable();
 			loadDistributionData(Integer.parseInt(jDialogInputDistribution.getTextQuantity()), Double.parseDouble(jDialogInputDistribution.getTextA()), Double.parseDouble(jDialogInputDistribution.getTextB()));
-			checandomamadas();
 			jDialogInputDistribution.setVisible(false);
 			jDialogInputDistribution.clearFields();
 			jDialogDistributionUn.setVisible(true);
 		}else {
 			JOptionPane.showMessageDialog(null, "Error!, campos invalidos","Error!", JOptionPane.ERROR_MESSAGE);
 		}
-	}
-
-	private void checandomamadas() {
-
 	}
 
 	private void loadDistributionData(int quantity, double min, double max) {
