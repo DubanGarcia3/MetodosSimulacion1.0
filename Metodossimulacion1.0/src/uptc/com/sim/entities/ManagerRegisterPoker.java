@@ -73,6 +73,7 @@ public class ManagerRegisterPoker {
 	public void addRegister(String register) {
 		registerPokerList.add(register);
 	}
+	
 
 	public Type valueType() {
 		for (int i = 0; i < a.size(); i++) {
